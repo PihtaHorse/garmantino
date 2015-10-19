@@ -40,7 +40,7 @@ body {
 }
 
 .menu a {
-	font-family: 'UkrainianFuturis';
+	font-family: 'DidactGothic';
 	text-decoration: none;
 	font-size: 160%;
 	color: #4D4C4A;
@@ -106,7 +106,7 @@ body {
 }
 
 @font-face{
-    font-family: 'UkrainianFuturis';
-    src: url(../fonts/UkrainianFuturis/NFUTURIS.ttf);
+    font-family: 'DidactGothic';
+    src: url(../fonts/DidactGothic/DidactGothic.ttf);
     font-weight: normal;
 }

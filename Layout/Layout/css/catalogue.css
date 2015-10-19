@@ -16,14 +16,83 @@ time, mark, audio, video {
 
 body {
 	background: white;
+    font-family: 'DidactGothic';
 }
 
 #nav-bar{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: stretch;
+    
     top: 0;
-    width: 100%;
+    
     height: 35px;
-    background-color: black;
-    opacity: 0.8;
+    background-color: white;
+}
+
+a{
+	text-decoration: none;
+    color: #575757;
+	font-size: 16pt;
+}
+
+#logo-gray{
+    padding-top: 4px; 
+    height: 90%;
+    margin-right: 3%;
+}
+
+.this-page-link{
+   color: #A42926 !important; 
+}
+
+#nav-bar > div{
+    display: flex;
+    align-items: center;
+    margin-right: 3%;
+}
+
+#nav-bar > div:last-child{
+    margin-right: 2%;
+}
+
+i{
+    margin-right: 10px;
+    color: #857e7e; 
+}
+
+form{
+    padding-top: 5px; 
+    min-height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#search{
+   border: 1px solid #959492; 
+   background-color: rgba(255, 255, 255, 0) !important; 
+   outline: none; 
+   color: #857e7e; 
+   font-size: 11px;
+}
+
+#search:focus {
+    background-color: rgba(255, 255, 255, 0) !important; 
+}
+
+#nav-bar button{
+    max-width: 15%;
+    
+    border: 1px solid #959492;
+    color: #959492;
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+#nav-bar button:focus{
+    outline: none;
 }
 
 .box-center{
@@ -33,7 +102,7 @@ body {
     align-items: center;
     
     margin-top: 3%;
-    margin-bottom: 2%; 
+    margin-bottom: 2%;
 }
 
 #red-logo{
@@ -42,6 +111,7 @@ body {
 
 #garmantino-red{
     max-width: 280px;
+    margin-top: -10px;
 }
 
 #good-furniture-red{
@@ -102,9 +172,65 @@ body {
 }
 
 #footer{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: stretch;
+    
     margin-top: -75px;
     width: 100%;
     height: 75px;
+    padding-top: 10px;
+    badding-bottom: 10px;
+    
     background-color: white;
     opacity: 0.8;
+}
+
+.box{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 80%;
+}
+
+.links{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ipMamul{
+    text-align: center;
+}
+
+.move-up{
+    min-width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.move-up button{    
+    border: 1px solid #959492;
+    color: #959492;
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.move-up button:focus{
+    outline: none;
+}
+
+.move-up i{
+    margin-right: 0px;
+    font-size: 30pt;
+}
+
+@font-face{
+    font-family: 'DidactGothic';
+    src: url(../fonts/DidactGothic/DidactGothic.ttf);
+    font-weight: normal;
 }
