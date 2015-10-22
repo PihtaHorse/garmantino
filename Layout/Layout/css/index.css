@@ -42,7 +42,7 @@ body {
 .menu a {
 	font-family: 'DidactGothic';
 	text-decoration: none;
-	font-size: 160%;
+	font-size: 18pt;
 	color: #4D4C4A;
 }
 
@@ -52,36 +52,10 @@ body {
 
 @keyframes anim1 {
     0%   {opacity: 0; cursor: default;}
-	5%   {opacity: 1; cursor: pointer;}
-	20%   {opacity: 1; cursor: pointer;}
-	25%   {opacity: 0; cursor: default;}
+	6.25%   {opacity: 1; cursor: pointer;}
+	25%   {opacity: 1; cursor: pointer;}
+	31.25%   {opacity: 0; cursor: default;}
     100% {opacity: 0; cursor: default;}
-}
-
-@keyframes anim2 {
-	0%   {opacity: 0; cursor: default;}
-	25%   {opacity: 0; cursor: default;}
-	30%   {opacity: 1; cursor: pointer;}
-	45%   {opacity: 1; cursor: pointer;}
-	50%   {opacity: 0; cursor: default;}
-    100% {opacity: 0; cursor: default;}
-}
-
-@keyframes anim3 {
-    0%   {opacity: 0; cursor: default;}
-	50%   {opacity: 0; cursor: default;}
-	55%   {opacity: 1; cursor: pointer;}
-	70%   {opacity: 1; cursor: pointer;}
-	75%   {opacity: 0; cursor: default;}
-    100% {opacity: 0; cursor: default;}
-}
-
-@keyframes anim4 {
-    0%   {opacity: 0; cursor: default;}
-	75%   {opacity: 0; cursor: default;}
-	80%   {opacity: 1; cursor: pointer;}
-	95%   {opacity: 1; cursor: pointer;}
-	100%   {opacity: 0; cursor: default;}
 }
 
 #pic1{
@@ -89,15 +63,15 @@ body {
 }
 
 #pic2{
-	animation: anim3 25s linear 0s infinite;
+	animation: anim1 25s linear -6.25s infinite;
 }
 
 #pic3{
-	animation: anim2 25s linear 0s infinite;
+	animation: anim1 25s linear -12.5s infinite;
 }
 
 #pic4{
-	animation: anim4 25s linear 0s infinite;
+	animation: anim1 25s linear -18.75s infinite;
 }
 
 #pic1, #pic2, #pic3, #pic4 {
