@@ -59,7 +59,7 @@ a{
 }
 
 i{
-    margin: 0px 5px 0px 5px;
+    margin-right: 10px;
     color: #857e7e; 
 }
 
@@ -95,6 +95,20 @@ form{
     outline: none;
 }
 
+#mainImgWrapper{
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+    width: 100vh;
+}
+
+#mainImg{
+    max-height: 90%;
+    max-width: 80%;
+    background-image: url('../imgs/item/itemPhoto1.jpg');
+    background-size:cover;
+}
+
 .box-center{
     display: flex;
     flex-direction: column;
@@ -119,12 +133,12 @@ form{
 }
 
 .hexagon {
-	min-width: 25vw;
-	height: 28.8675vw; /* 25 * 2/sqrt(3) */
+	min-width: 10vw;
+	height: 11.547vw; /* 10 * 2/sqrt(3) */
 }
 
 .hexagon-part2 {
-    background-image: url("../imgs/hexagon-no-background.png");
+    background-image: url('../imgs/hexagon-no-background.png');
 }
 
 .hexagon-with-pic {
@@ -136,11 +150,11 @@ form{
 }
 
 .hexagon-row-even, .hexagon-row-odd{
-    margin-top: -7.35% !important;
+    margin-top: -3.0% !important;
 }
 
 .hexagon-row-even .hexagon:first-child{
-	margin-left: -12.5% !important;
+	margin-left: -5% !important;
 }
 
 #last-row{
@@ -157,19 +171,6 @@ form{
     opacity: 0.8;
 }
 
-
-#puzzle{
-    background-image: url("../imgs/pic11.jpg");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: 50%;
-}
-
-#puzzle:hover{
-    background-image: url("../imgs/pic10.jpg");
-    opacity: 1;
-}
-
 #footer{
     display: flex;
     flex-wrap: nowrap;
@@ -177,7 +178,6 @@ form{
     justify-content: flex-end;
     align-items: stretch;
     
-    margin-top: -75px;
     width: 100%;
     height: 75px;
     padding-top: 10px;
