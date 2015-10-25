@@ -55,7 +55,7 @@ a{
 }
 
 #nav-bar i{
-    margin-right: 10px;
+    margin: 0 15px 0 5px;
     color: #857e7e; 
 }
 
@@ -206,6 +206,11 @@ a{
     
     background-color: white;
     opacity: 0.8;
+}
+
+#footer i{
+    margin: 0 15px 0 5px;
+    color: #857e7e; 
 }
 
 .box{

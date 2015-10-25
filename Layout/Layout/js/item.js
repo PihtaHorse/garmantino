@@ -9,6 +9,8 @@ var i, n, last, lastNumber,
     imgs = document.querySelectorAll("#smallImages .smallImg"),
     imgWrappers = document.querySelectorAll("#smallImages .smallImgWrapper");
 
+n = imgs.length;
+
 var smallImgClick = function(smallImg, i){
     var callback = function(){
             bigImg.style.backgroundImage = "url(" + smallImg.src + ")";
@@ -22,29 +24,29 @@ var smallImgClick = function(smallImg, i){
 };
 
 var buttonUpClick = function(){
-    
+    console.log(last.src, lastNumber);
     if (lastNumber != 0) {
-        bigImg.style.backgroundImage = "url(" + last.src + ")";
         last.style.opacity = 0.4;
         last = imgs[--lastNumber];
         last.style.opacity = 1;
+        bigImg.style.backgroundImage = "url(" + last.src + ")";
     };
+    console.log(last.src, lastNumber);
 };
 
 var buttonDownClick = function(){
-    
+    console.log(last.src, lastNumber);
     if (lastNumber != n-1) {
-        bigImg.style.backgroundImage = "url(" + last.src + ")";
         last.style.opacity = 0.4;
         last = imgs[++lastNumber];
         last.style.opacity = 1;
+        bigImg.style.backgroundImage = "url(" + last.src + ")";
     };
+    console.log(last.src, lastNumber);
 };
 
 buttonUp.addEventListener("click", buttonUpClick);
 buttonDown.addEventListener("click", buttonDownClick);
-
-n = imgs.length;
 
 for(i = 0; i < n; i++ ){
     imgs[i].style.opacity = 0.4;

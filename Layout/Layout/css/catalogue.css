@@ -58,12 +58,12 @@ a{
     margin-right: 2%;
 }
 
-i{
-    margin: 0px 5px 0px 5px;
+#nav-bar i{
+    margin: 0px 15px 0px 5px;
     color: #857e7e; 
 }
 
-form{
+#nav-bar form{
     padding-top: 5px; 
     min-height: 40%;
     display: flex;
@@ -184,6 +184,10 @@ form{
     
     background-color: white;
     opacity: 0.8;
+}
+
+#footer i{
+    margin: 0 15px 0 5px;
 }
 
 .box{
