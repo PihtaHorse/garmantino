@@ -1,62 +1,34 @@
 "use strict"
-/*
-var buttonToTop = document.querySelector(".move-up .fa-angle-up");
-buttonToTop.addEventListener("click", function(){window.scrollTo(0, 0)});
 
-var i, n, last, lastNumber,
-    bigImg = document.querySelector("#mainImgWrapper"),
-    buttonUp = document.querySelector("#buttonPrevious"),
-    buttonDown = document.querySelector("#buttonNext"), 
-    imgs = document.querySelectorAll("#smallImages .smallImg"),
-    imgWrappers = document.querySelectorAll("#smallImages .smallImgWrapper");
-
-n = imgs.length;
-
-var smallImgClick = function(smallImg, i){
-    var callback = function(){
-            bigImg.style.backgroundImage = "url(" + smallImg.src + ")";
-            last.style.opacity = 0.4;
-            smallImg.style.opacity = 1;
-            last = smallImg;
-            lastNumber = i;
-        };
+var i = 0, lastNumber = 0, paths, n,
+    img = document.getElementById("image-slider"),
+    buttonLeft = document.getElementById("button-left"),
+    buttonRight = document.getElementById("button-right");
     
-    return callback;
+    paths = ["../imgs/item/itemPhoto1.png",
+             "../imgs/item/itemPhoto2.png",
+             "../imgs/item/itemPhoto3.png",
+             "../imgs/item/itemPhoto4.jpg",
+             "../imgs/item/itemPhoto5.png",];
+    n = paths.length;
+
+var buttonLeftClick = function(){
+    console.log(lastNumber, img.src);
+    if (lastNumber != 0) img.src = paths[--lastNumber];
+    else{
+        lastNumber = n-1;
+        img.src = paths[lastNumber];
+    }
 };
 
-var buttonUpClick = function(){
-    console.log(last.src, lastNumber);
-    if (lastNumber != 0) {
-        last.style.opacity = 0.4;
-        last = imgs[--lastNumber];
-        last.style.opacity = 1;
-        bigImg.style.backgroundImage = "url(" + last.src + ")";
-    };
-    console.log(last.src, lastNumber);
+var buttonRightClick = function(){
+    console.log(lastNumber, img.src);
+    if (lastNumber != n-1) img.src = paths[++lastNumber];
+    else{
+        lastNumber = 0;
+        img.src = paths[lastNumber];
+    }
 };
 
-var buttonDownClick = function(){
-    console.log(last.src, lastNumber);
-    if (lastNumber != n-1) {
-        last.style.opacity = 0.4;
-        last = imgs[++lastNumber];
-        last.style.opacity = 1;
-        bigImg.style.backgroundImage = "url(" + last.src + ")";
-    };
-    console.log(last.src, lastNumber);
-};
-
-buttonUp.addEventListener("click", buttonUpClick);
-buttonDown.addEventListener("click", buttonDownClick);
-
-for(i = 0; i < n; i++ ){
-    imgs[i].style.opacity = 0.4;
-    imgs[i].addEventListener("click", smallImgClick(imgs[i], i));
-}
-
-lastNumber = 0;
-if (n != 0){
-    last = imgs[0];
-    imgs[0].style.opacity = 1;
-}
-*/
+buttonLeft.addEventListener("click", buttonLeftClick);
+buttonRight.addEventListener("click", buttonRightClick);
