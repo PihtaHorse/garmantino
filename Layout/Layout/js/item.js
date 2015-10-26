@@ -1,4 +1,5 @@
 "use strict"
+/*
 var buttonToTop = document.querySelector(".move-up .fa-angle-up");
 buttonToTop.addEventListener("click", function(){window.scrollTo(0, 0)});
 
@@ -58,3 +59,4 @@ if (n != 0){
     last = imgs[0];
     imgs[0].style.opacity = 1;
 }
+*/

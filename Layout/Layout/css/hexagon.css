@@ -1,6 +1,6 @@
 .hexagon {
 	min-width: 20vw;
-	height: 23.094vw;
+	height: 23.094vw; /* 20 * 2/sqrt(3) */
 	
 	overflow: hidden;
 	visibility: hidden;
