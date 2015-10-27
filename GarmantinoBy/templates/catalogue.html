@@ -1,0 +1,118 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='ru'>
+    
+	<head>
+		<meta charset="UTF-8">
+		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
+		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
+		<link rel='stylesheet' href='{% static "css\navbar.css" %}'>
+		<link rel='stylesheet' href='{% static "css\footer.css" %}'>
+		<link rel='stylesheet' href='{% static "css\catalogue.css" %}'>
+		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+		<title>Garmantino.by</title>
+	</head>
+
+	<body>
+		<nav id='nav-bar'>
+			<img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'>
+			<div> <a href='#' class='this-page-link'> Каталог </a> </div>
+			<div> <a href='#'> Конструктор </a> </div>
+			<div> <a href='#'> Контакты </a> </div>
+			<div> <a href='#'> О нас </a> </div>
+			<div> <a href='#'> Задать вопрос </a> </div>
+			<div>
+				<a href='#'> <i class="fa fa-facebook-square">  </i> </a>
+				<a href='#'> <i class="fa fa-vk">  </i> </a>
+			</div>
+			
+			<div>
+				<form>
+					<input type='text' id='search'>
+					<button type='submit'> <i class="fa fa-search">  </i> </button>
+				</form>
+			</div>	
+			
+		</nav>
+		
+		<div class='box-center'>
+			<img id='logo-red' src='{% static "imgs/logo-red.png" %}'>
+			<img id='garmantino-red' src='{% static "imgs/garmantino-red.png" %}'>
+			<img id='good-furniture-red' src='{% static "imgs/good-furniture-red.png" %}'>
+		</div>
+		
+		<div class='hexagons-wrapper'>
+			<div class='hexagon-row-even' id='first-row'>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+					<a href='#'> <img src='{% static "imgs/catalogue1.png" %}' class='pic'> </a>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+					<a href='#'> <img src='{% static "imgs/catalogue2.png" %}' class='pic'> </a>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+					<a href='#'> <img src='{% static "imgs/catalogue3.png" %}' class='pic'> </a>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				</div></div></div>
+			</div>
+			
+			<div class='hexagon-row-odd'>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+					<a href='#'> <img src='{% static "imgs/pic4.png" %}' class='pic'> </a>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+					<a href='#'> <img src='{% static "imgs/pic5.png" %}' class='pic'> </a>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+					<a href='#'> <div class='pic' id='puzzle'></div> </a>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+					<a href='#'> <img src='{% static "imgs/pic6.png" %}' class='pic'> </a>
+				</div></div></div>
+			</div>
+			
+			<div class='hexagon-row-even' id='last-row'>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				</div></div></div>
+				<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				</div></div></div>
+			</div>
+		</div>
+		
+		<footer id='footer'>
+			<div class='box'>
+				<div class='links'>
+					<div> <a href='#' class='this-page-link'> Каталог </a> </div>
+					<div> <a href='#'> Конструктор </a> </div>
+					<div> <a href='#'> Контакты </a> </div>
+					<div> <a href='#'> О нас </a> </div>
+					<div> <a href='#'> Задать вопрос </a> </div>
+					<div>
+					<a href='#'> <i class="fa fa-facebook-square">  </i> </a>
+					<a href='#'> <i class="fa fa-vk">  </i> </a>
+					</div>
+					
+				</div>
+				<div class='ipMamul'>
+					ИП Мамуль Оксана Георгиевна
+				</div>
+			</div>
+			
+			<div class='move-up'>
+				<button> <i class="fa fa-angle-up"> </i> </button>
+			</div>
+			
+		</footer>
+		
+		<script src='{% static "js/catalogue.js" %}'/></script>	
+    </body>
+    
+</html>

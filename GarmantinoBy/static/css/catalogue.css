@@ -1,0 +1,106 @@
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, 
+img, ol, ul, li,
+tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video, button {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+	background: white;
+    font-family: 'DidactGothic';
+}
+
+.this-page-link{
+   color: #A42926 !important; 
+}
+
+
+.box-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin-top: 35px;
+    margin-bottom: 2%;
+}
+
+#logo-red{
+    max-width: 45px;
+}
+
+#garmantino-red{
+    max-width: 280px;
+    margin-top: -10px;
+}
+
+#good-furniture-red{
+    max-width: 160px;
+}
+
+.hexagon {
+	min-width: 25vw;
+	height: 28.8675vw; /* 25 * 2/sqrt(3) */
+}
+
+.hexagon-part2 {
+    background-image: url("../imgs/hexagon-no-background.png");
+}
+
+.hexagon-with-pic {
+    background: white !important;
+}
+
+#first-row{
+    margin-top: 0% !important;
+}
+
+.hexagon-row-even, .hexagon-row-odd{
+    margin-top: -7.35% !important;
+}
+
+.hexagon-row-even .hexagon:first-child{
+	margin-left: -12.5% !important;
+}
+
+#last-row{
+	height: 18.3vw !important;
+}
+
+.pic{
+    background-color: white; 
+	width: 100%;
+	height: 100%;
+}
+
+.pic:hover{
+    opacity: 0.8;
+}
+
+
+#puzzle{
+    background-image: url("../imgs/pic11.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50%;
+}
+
+#puzzle:hover{
+    background-image: url("../imgs/pic10.jpg");
+    opacity: 1;
+}
+
+@font-face{
+    font-family: 'DidactGothic';
+    src: url(../fonts/DidactGothic/DidactGothic.ttf);
+    font-weight: normal;
+}
