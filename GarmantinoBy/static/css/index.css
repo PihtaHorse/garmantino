@@ -15,7 +15,7 @@ time, mark, audio, video {
 }
 
 body {
-	background: #959492;
+	background: white; /*#959492*/
 	overflow-y: hidden;
 }
 

@@ -23,13 +23,16 @@
 #logo-gray{
     padding-top: 4px; 
     height: 30px;
-    margin-right: 3%;
 }
 
 #nav-bar > div{
     display: flex;
     align-items: center;
     margin-right: 3%;
+}
+
+#nav-bar > a:first-child{
+    margin-right: 4%;
 }
 
 #nav-bar > div:last-child{

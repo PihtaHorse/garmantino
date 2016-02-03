@@ -12,19 +12,15 @@
 		<title>Garmantino.by</title>
 		
 		<script>
-            var paths = ['{% static "imgs/item/itemPhoto1.png" %}',
-						 '{% static "imgs/item/itemPhoto2.png" %}',
-						 '{% static "imgs/item/itemPhoto3.png" %}',
-						 '{% static "imgs/item/itemPhoto4.jpg" %}',
-						 '{% static "imgs/item/itemPhoto5.png" %}',];
+            var paths = [{% for url in photos_urls %} '{{ url }}', {% empty %} '{% static "imgs/default-item.jpg" %}' {% endfor %}];
         </script>
 
 	</head>
 
 	<body>
 		<nav id='nav-bar'>
-			<img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'>
-			<div> <a href='#'> Каталог </a> </div>
+			<a href='{% url "index" %}'> <img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'> </a>
+			<div> <a href='{% url "catalogue" %}' class='this-page-link'> Каталог </a> </div>
 			<div> <a href='#'> Конструктор </a> </div>
 			<div> <a href='#'> Контакты </a> </div>
 			<div> <a href='#'> О нас </a> </div>
@@ -52,32 +48,30 @@
 		</div>
 		
 		<div class='hexagon-row-even' id='middle-row'>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
-				<div id='hexagon1'>
+			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				<div class='hexagon-white'>
 					<div id='button-left'> <i class="fa fa-angle-left"> </i> </div>
 				</div>
 			</div></div></div>
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-					<img id='image-slider' src='{% static "imgs/item/itemPhoto5.png" %}'>
+					<img id='image-slider' src={% if photos_urls %} {{ photos_urls|first }} {% else %} '{% static "imgs/default-item.jpg" %}' {% endif %}>
 			</div></div></div>
             <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<div id='hexagon3'>
+				<div id='hexagon-description'>
 					<div id='button-right'> <i class="fa fa-angle-right"> </i> </div>
 					<div id='description'>
-						<p>Стол обеденный</p>
-						<p>Конструкция: <a href='#'>раздвижной</a></p>
-						<p>Размер: <a href='#'>1600x800x760h</a></p>
-						<p>Столешница: <a href='#'>постформинг</a></p>
-						<p>Цвет столешницы: <a href='#'>Серый иней</a></p>
-						<p>Кромка: <a href='#'>серая</a></p>
-						<p>Материал обвязки: <a href='#'>сосна</a></p>
-						<p>Цвет обвязки: <a href='#'>серый</a></p>
-						<p>Ножки: <a href='#'>круглые</a>, <a href='#'>металлические</a></p>
+						<p>{{ item.name|title }}</p>
+						{% for property in properties %}
+                            <p> {{ property.name }} <a href='#'> {{ property.value }} </a></p>
+                        {% empty %}
+                            'На данный момент характеристик - нет!'
+                        {% endfor %}
 					</div>
 					<div class='nothing'></div>
 				</div>
 			</div></div></div>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				<div class='hexagon-white'></div>
 			</div></div></div>
 		</div>
 		
@@ -90,7 +84,8 @@
 			</div></div></div>
 		</div>
 
-		<script src='{% static "js/item.js" %}'/></script>	
+		<script src='{% static "js/item.js" %}'>
+        </script>
     </body>
     
 </html>
