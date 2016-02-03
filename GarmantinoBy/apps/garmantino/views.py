@@ -23,9 +23,13 @@ def category(request, category_id):
         for row in range(0, rows_number):
             cells = []
             for i in range(CELLS_NUMBER[row]+1, CELLS_NUMBER[row+1]+1):
-                if i < items_number:
-                    items[i].photo = Image.objects.filter(item_id=items[i].id).first()
-                    cells.append(items[i])
+                print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                print(items_number)
+                print(i)
+                print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                if i <= items_number:
+                    items[i-1].photo = Image.objects.filter(item_id=items[i-1].id).first()
+                    cells.append(items[i-1])
                 else:
                     cells.append(None)
             rows.append(cells)
@@ -35,6 +39,7 @@ def category(request, category_id):
             for cell in rows[row]:
                 print(str(cell))
             print('***********************************************')
+        print(rows)
 
     context = {'rows':rows, 'is_rows_number_odd': len(rows)%2 == 1}
     return render(request, 'category.html', context)
