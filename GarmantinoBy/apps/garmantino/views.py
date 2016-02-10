@@ -1,13 +1,21 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from apps.garmantino.models import Category, Item, Image, Property
+from apps.garmantino.models import Category, Item, Image, Property, ItemOnHomePage
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 CELLS_NUMBER = [0, 3, 7, 10, 14, 17, 21, 24, 28, 31, 35]
-               #3  4   3   4   3   4   3   4   3   4 Колличество свбодных клеток в ряду
+               #0  3  4   3   4   3   4   3   4   3   4   Колличество свбодных клеток в ряду
+CELLS_NUMBER_V2 = [0, 5, 9, 14, 19, 24, 29, 34, 39, 44, 49]
+                  #0  5  4   5   4   5   4   5   4   5   4   Колличество свбодных клеток в ряду
 
 def index(request):
-    context ={}
+    items = [obj.item for obj in ItemOnHomePage.objects.order_by('importance')]
+    photos = [item.image_set.first().photo for item in items]
+    photos_urls = [photo.url for photo in photos]
+    items_ids = [item.id for item in items]
+    img_ids = ['pic1', 'pic2', 'pic3', 'pic4']
+
+    context = {'photos_urls': photos_urls, 'items_ids': items_ids, 'img_ids': img_ids}
     return render(request, 'index.html', context)
 
 def category(request, category_id):
@@ -55,6 +63,10 @@ def catalogue(request):
     categories = Category.objects.filter(parent_category_id=super_category.id).order_by('position')
     categories_positions = [category.position for category in categories]
     rows = []
+
+    for position in categories_positions:
+        print( position )
+
 
     if len(categories) != 0:
         rows_number = 0

@@ -7,8 +7,8 @@ n = imgs.length;
 
 repeatFunction = function(img, a, i){
     var fun = function(){
-            img.src = "static/imgs/pic" + ((fun.calls  + i) % 6 + 3) + ".png";
-            a.href = "#" + (i + fun.calls) % 6;
+            img.src = photos_urls[(i + fun.calls) % n];
+            a.href = item_urls[(i + fun.calls) % n];
             console.log(fun.calls++);
         };
     fun.calls = 0;

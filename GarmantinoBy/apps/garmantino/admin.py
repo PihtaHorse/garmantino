@@ -1,10 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Item
-from .models import Property
-from .models import Image
-from .models import Category
+from .models import Item, Property, Image, Category, ItemOnHomePage
 
 class PropertyInline(admin.TabularInline):
     model = Property
@@ -28,3 +25,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(ItemOnHomePage)

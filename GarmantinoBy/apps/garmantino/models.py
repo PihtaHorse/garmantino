@@ -96,6 +96,10 @@ class Item(models.Model):
                               default='c',
                               verbose_name='Приоритетность')
 
+    def clean(self):
+        if self.image_set.count() == 0:
+            Image.objects.create(photo=os.path.join('imgs', 'items', 'default-item.jpg'), item=self)
+
     def __str__(self):
         status = [value for (name, value) in ITEM_STATUS_CHOICES if name == self.status]
         return self.name + ' (' + status[0] + ')'
@@ -129,6 +133,18 @@ class Image(models.Model):
 
     item = models.ForeignKey(Item)
 
+class ItemOnHomePage(models.Model):
+    class Meta():
+        verbose_name = "Предмет для главной страницы"
+        verbose_name_plural = "Предметы для главной страницы"
+        ordering = ['pub_date']
 
+    item = models.OneToOneField(Item, verbose_name='Предмет для главной')
+    pub_date = models.DateTimeField(auto_now_add=True, blank=True)
+    importance = models.CharField(max_length=1,
+                              choices=IMPORTANCE_STATUS_CHOICES,
+                              default='c',
+                              verbose_name='Приоритетность')
 
-
+    def __str__(self):
+        return self.item.name
