@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for GarmantinoBy project.
 
@@ -76,8 +77,10 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'test.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'garmantino',
+        'USER': 'postgres',
+        'PASSWORD': 'admin'
     }
 }
 
@@ -87,13 +90,13 @@ DATABASES = {
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+3'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -103,10 +106,10 @@ MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_URL='/static/'
+STATIC_URL = '/static/'
+
+DEFAULT_PHOTO_URL = '/media/imgs/items/default-item.jpg'

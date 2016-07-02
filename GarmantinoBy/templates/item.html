@@ -6,7 +6,7 @@
 		<meta charset='UTF-8'>
 		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
 		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
-		<link rel='stylesheet' href='{% static "css\navbar.css" %}'>
+		<link rel='stylesheet' href='{% static "css\header.css" %}'>
 		<link rel='stylesheet' href='{% static "css\item.css" %}'>
 		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
 		<title>Garmantino.by</title>
@@ -18,25 +18,7 @@
 	</head>
 
 	<body>
-		<nav id='nav-bar'>
-			<a href='{% url "index" %}'> <img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'> </a>
-			<div> <a href='{% url "catalogue" %}' class='this-page-link'> Каталог </a> </div>
-			<div> <a href='#'> Конструктор </a> </div>
-			<div> <a href='#'> Контакты </a> </div>
-			<div> <a href='#'> О нас </a> </div>
-			<div> <a href='#'> Задать вопрос </a> </div>
-			<div>
-				<a href='#'> <i class="fa fa-facebook-square">  </i> </a>
-				<a href='#'> <i class="fa fa-vk">  </i> </a>
-			</div>
-			
-			<div>
-				<form>
-					<input type='text' id='search'>
-					<button type='submit'> <i class="fa fa-search">  </i> </button>
-				</form>
-			</div>	
-		</nav>
+		{%include 'header.html'%}
         
 		<div class='hexagon-row-odd' id='first-row'>
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
@@ -54,7 +36,7 @@
 				</div>
 			</div></div></div>
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-					<img id='image-slider' src={% if photos_urls %} {{ photos_urls|first }} {% else %} '{% static "imgs/default-item.jpg" %}' {% endif %}>
+					<img id='image-slider' src={{ photos_urls|first }}>
 			</div></div></div>
             <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
 				<div id='hexagon-description'>
@@ -84,8 +66,7 @@
 			</div></div></div>
 		</div>
 
-		<script src='{% static "js/item.js" %}'>
-        </script>
+		<script src='{% static "js/item.js" %}'></script>
     </body>
     
 </html>

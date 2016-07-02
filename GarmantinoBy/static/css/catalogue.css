@@ -19,11 +19,6 @@ body {
     font-family: 'DidactGothic';
 }
 
-.this-page-link{
-   color: #A42926 !important; 
-}
-
-
 .box-center{
     display: flex;
     flex-direction: column;
@@ -35,16 +30,16 @@ body {
 }
 
 #logo-red{
-    max-height: 60px;
+    max-width: 36px;
 }
 
 #garmantino-red{
-    max-height: 60px;
+    max-width: 256px;
     margin-top: -10px;
 }
 
 #good-furniture-red{
-    max-height: 20px;
+    max-width: 170px;
 }
 
 .hexagon {
@@ -60,24 +55,21 @@ body {
     background: white !important;
 }
 
-#first-row{
-    margin-top: 0% !important;
+.hexagons-wrapper > :first-child{
+    margin-top: 0%;
 }
 
-.hexagons-wrapper > .hexagon-row-even:first-child{
-    margin-top: -22%;
+.hexagons-wrapper > :last-child{
+	height: 18.3vw;
+    margin-bottom: -75px;
 }
 
 .hexagon-row-even, .hexagon-row-odd{
-    margin-top: -7.35% !important;
+    margin-top: -7.35%;
 }
 
 .hexagon-row-even .hexagon:first-child{
 	margin-left: -12.5% !important;
-}
-
-#last-row{
-	height: 18.3vw !important;
 }
 
 .pic{
@@ -89,7 +81,6 @@ body {
 .pic:hover{
     opacity: 0.8;
 }
-
 
 #puzzle{
     background-image: url("../imgs/pic11.jpg");

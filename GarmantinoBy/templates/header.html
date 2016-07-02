@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<nav id='nav-bar'>
+	<a href='{% url "index" %}'> <img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'> </a>
+	<div> <a href='{% url "catalogue" %}' class='this-page-link'> Каталог </a> </div>
+	<div> <a href='#'> Конструктор </a> </div>
+	<div> <a href='#'> Контакты </a> </div>
+	<div> <a href='#'> О нас </a> </div>
+	<div> <a href='#'> Задать вопрос </a> </div>
+	<div>
+		<a href='#'> <i class="fa fa-facebook-square">  </i> </a>
+		<a href='#'> <i class="fa fa-vk">  </i> </a>
+	</div>
+			
+	<div>
+		<form action='{% url "search" %}' method='get' >
+			<input type='text' name='question' id='search' placeholder='Поиск'>
+			<input type='submit' value=''>
+		</form>
+	</div>
+</nav>

@@ -10,92 +10,42 @@
 		<title>Garmantino.by</title>
 
         <script>
-            var photos_urls = [{% for url in photos_urls %} '{{ url }}' {% endfor %}];
-            var item_urls = [{% for id in items_ids %} '{% url "item" id%}' {% endfor %}];
+            var photos_urls = [{% for url in items_photos_urls %} '{{ url }}', {% endfor %}];
+            var item_urls = [{% for id in items_ids %} '{% url "item" id%}', {% endfor %}];
         </script>
 	</head>
 
 	<body>
-		<div class='hexagon-row-odd' id='first-row'>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-        </div>
-        <div class='hexagon-row-even'>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-        </div>
-		
-		<div class='hexagon-row-odd'>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<a href='{% url "item" items_ids.0%}'> <img src='{{ photos_urls.0 }}' id='pic1'> </a>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<a href='{% url "item" items_ids.1%}'> <img src='{{ photos_urls.1 }}' id='pic2'> </a>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<nav class='menu'>
-					<ul>
-						<li><a href='{% url "catalogue" %}'>Каталог</a></li>
-						<li><a href='#'>Конструктор</a></li>
-						<li><a href='#'>Контакты</a></li>
-						<li><a href='#'>О нас</a></li>
-					</ul>
-				</nav>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<a href='{% url "item" items_ids.2%}'> <img src='{{ photos_urls.2 }}' id='pic3'> </a>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<a href='{% url "item" items_ids.3%}'> <img src='{{ photos_urls.3 }}' id='pic4'> </a>
-			</div></div></div>
-        </div>
-        
-        <div class='hexagon-row-even'>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-        </div>
-		
-		<div class='hexagon-row-odd' id='last-row'>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-        </div>
-		
+		<div class='hexagons-wrapper'>
+			{% for row in rows %}
+				<div class= '{% if row|length == 5%} hexagon-row-odd {% else %} hexagon-row-even {% endif %}' {% if forloop.first %} id='first-row' {% endif %} {% if forloop.last %} id='last-row' {% endif %}>
+					{% for cell in row %}
+						{% if cell %}
+							<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+								<a href='{% url "item" cell.item_id%}' > <img src='{{ cell.item_photo_url }}' style='{{ cell.css_token }}'> </a>
+							</div></div></div>
+						{% else %}
+							{% if forloop.parentloop.counter == 3 and forloop.counter == 3%}
+								<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+									<nav class='menu'>
+										<ul>
+											<li><a href='{% url "catalogue" %}'>Каталог</a></li>
+											<li><a href='#'>Конструктор</a></li>
+											<li><a href='#'>Контакты</a></li>
+											<li><a href='#'>О нас</a></li>
+										</ul>
+									</nav>
+								</div></div></div>
+							{% else %}
+								<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+								</div></div></div>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+
 		<script src='{% static "js/index.js" %}'>
         </script>
 	</body>

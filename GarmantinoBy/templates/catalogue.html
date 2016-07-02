@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
 		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
-		<link rel='stylesheet' href='{% static "css\navbar.css" %}'>
+		<link rel='stylesheet' href='{% static "css\header.css" %}'>
 		<link rel='stylesheet' href='{% static "css\footer.css" %}'>
 		<link rel='stylesheet' href='{% static "css\catalogue.css" %}'>
 		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
@@ -14,164 +14,36 @@
 	</head>
 
 	<body>
-		<nav id='nav-bar'>
-			<a href='{% url "index" %}'> <img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'> </a>
-			<div> <a href='{% url "catalogue" %}' class='this-page-link'> Каталог </a> </div>
-			<div> <a href='#'> Конструктор </a> </div>
-			<div> <a href='#'> Контакты </a> </div>
-			<div> <a href='#'> О нас </a> </div>
-			<div> <a href='#'> Задать вопрос </a> </div>
-			<div>
-				<a href='#'> <i class="fa fa-facebook-square">  </i> </a>
-				<a href='#'> <i class="fa fa-vk">  </i> </a>
-			</div>
-			
-			<div>
-				<form>
-					<input type='text' id='search'>
-					<button type='submit'> <i class="fa fa-search">  </i> </button>
-				</form>
-			</div>
-		</nav>
+		{%include 'header.html'%}
 		
-		<div class='box-center'>
-			<img id='logo-red' src='{% static "imgs/logo-red.png" %}'>
-			<img id='garmantino-red' src='{% static "imgs/garmantino-red.png" %}'>
-			<img id='good-furniture-red' src='{% static "imgs/good-furniture-red.png" %}'>
-		</div>
+		{%include 'logos_box_center.html'%}
 
 		<div class='hexagons-wrapper'>
             {% for row in rows %}
-
-                {% if row|length == 3%}
-                    <div class='hexagon-row-even' {% if forloop.first %} id='first-row' {% endif %}>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-
-                        {% for category in row %}
-                            {% if category %}
-                                <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
-                                    <a href='{% url "category" category.id %}'> <img src='{{ category.photo.url }}' class='pic' title='{{ category.name }}'> </a>
-                                </div></div></div>
-                            {% else %}
-                                <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                                </div></div></div>
-                            {% endif %}
-                        {% endfor %}
-
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                    </div>
-                {% endif %}
-
-                {% if row|length == 4%}
-                    <div class='hexagon-row-odd'>
+                <div class= '{% if row|length == 5%} hexagon-row-even {% else %} hexagon-row-odd {% endif %}'>
                     {% for category in row %}
                         {% if category %}
                             <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
-                                    <a href='{% url "category" category.id %}'> <img src='{{ category.photo.url }}' class='pic' title='{{ category.name }}'> </a>
-                                </div></div></div>
+                                <a href='{% url "category" category.id %}'> <img src='{{ category.photo.url }}' class='pic' title='{{ category.name }}'> </a>
+                            </div></div></div>
                         {% else %}
                             <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
                             </div></div></div>
                         {% endif %}
                     {% endfor %}
-                    </div>
-                {% endif %}
+                </div>
 
             {% empty %}
-                <div class='hexagon-row-even' id='first-row'>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-			    </div>
-
-                <div class='hexagon-row-odd'>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                </div>
-
-                <div class='hexagon-row-even' id='last-row'>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                </div>
+                {%include 'empty_hexagon_row_even.html'%}
+                {%include 'empty_hexagon_row_odd.html'%}
+				{%include 'empty_hexagon_row_even.html'%}
             {% endfor %}
+        </div>
 
-            {% if is_rows_number_odd %}
-                <div class='hexagon-row-odd' id='last-row'>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                </div>
-            {% else %}
-                <div class='hexagon-row-even' id='last-row'>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                </div>
-            {% endif %}
-		</div>
+		{%include 'footer.html'%}
 		
-		<footer id='footer'>
-			<div class='box'>
-				<div class='links'>
-					<div> <a href='#' class='this-page-link'> Каталог </a> </div>
-					<div> <a href='#'> Конструктор </a> </div>
-					<div> <a href='#'> Контакты </a> </div>
-					<div> <a href='#'> О нас </a> </div>
-					<div> <a href='#'> Задать вопрос </a> </div>
-					<div>
-					<a href='#'> <i class="fa fa-facebook-square">  </i> </a>
-					<a href='#'> <i class="fa fa-vk">  </i> </a>
-					</div>
-					
-				</div>
-				<div class='ipMamul'>
-					ИП Мамуль Оксана Георгиевна
-				</div>
-			</div>
-			
-			<div class='move-up'>
-				<button> <i class="fa fa-angle-up"> </i> </button>
-			</div>
-			
-		</footer>
-		
-		<script src='{% static "js/catalogue.js" %}'>
-        </script>
+		<script src='{% static "js/catalogue.js" %}'></script>
+        <script src='{% static "js/footer.js" %}'></script>
     </body>
     
 </html>

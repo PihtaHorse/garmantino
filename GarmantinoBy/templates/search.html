@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='ru'>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
+		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
+		<link rel='stylesheet' href='{% static "css\header.css" %}'>
+		<link rel='stylesheet' href='{% static "css\footer.css" %}'>
+		<link rel='stylesheet' href='{% static "css\catalogue.css" %}'>
+        <link rel='stylesheet' href='{% static "css\search.css" %}'>
+		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+		<title>Garmantino.by</title>
+	</head>
+
+	<body>
+		{%include 'header.html'%}
+
+		{%include 'logos_box_center.html'%}
+
+		<div class='search-results'>
+            <p>Результаты поиска на вопрос "{{ question }}":</p>
+            {% for item in results %}
+				
+				<p>
+					Столик: <a href='{% url "item" item.id %}'>{{ item.name }}</a>
+				</p>
+				<p>
+					Категории:
+					{% for category in item.categories %}
+						<a href='{% url "category" category.id %}'>{{ category.name }}</a> {%if not forloop.last%},{%endif%}
+					{% endfor%}
+				</p>
+				
+				<a href='{% url "item" item.id %}'>
+					<img src='{{ item.photo }}' class='pic' title='{{ item.name }}'>
+				</a>
+            {% endfor%}
+
+		</div>
+
+		{%include 'footer.html'%}
+
+		<script src='{% static "js/search.js" %}'></script>
+        <script src='{% static "js/footer.js" %}'></script>
+    </body>
+
+</html>

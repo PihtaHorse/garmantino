@@ -10,11 +10,3 @@
 .hexagon-row-even .hexagon:first-child{
 	margin-left: -10%;
 }
-
-#first-row{
-	margin-top: -22%;
-}
-
-#last-row{
-	height: 17.3vw;
-}

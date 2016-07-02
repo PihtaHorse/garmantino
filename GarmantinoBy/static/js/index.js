@@ -1,21 +1,17 @@
-"use strict"
-var imgs, links, i, n, repeatFunction;
+"use strict";
+var imgs, links, i, n, repeatFunction, repeatFunctionCalls;
 
 imgs = document.querySelectorAll("a > img");
 links = document.querySelectorAll("div .hexagon-part2 > a");
 n = imgs.length;
+repeatFunctionCalls = 1;
 
 repeatFunction = function(img, a, i){
-    var fun = function(){
-            img.src = photos_urls[(i + fun.calls) % n];
-            a.href = item_urls[(i + fun.calls) % n];
-            console.log(fun.calls++);
-        };
-    fun.calls = 0;
-    
-    return fun;
+    a.href = item_urls[repeatFunctionCalls % n];
+    img.src = photos_urls[repeatFunctionCalls % n];
+    repeatFunctionCalls++;
 };
 
-for(i = 0; i < imgs.length; i++){
+for(i = 0; i < n; i++){
     imgs[i].addEventListener("animationiteration", repeatFunction(imgs[i], links[i], i));
-};
+}
