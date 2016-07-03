@@ -37,9 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-
     'django.contrib.staticfiles',
-
     'apps.garmantino'
 )
 
@@ -90,13 +88,13 @@ DATABASES = {
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC+3'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

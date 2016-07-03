@@ -1,15 +1,19 @@
-.search-results img{
+#search-results img{
     width: 10%;
 }
 
-p{
+#search-results p{
     text-decoration: none;
     color: #575757;
 	font-size: 16pt;
 }
 
-a{
+#search-results a{
     text-decoration: none;
     color: #A42926;
 	font-size: 16pt;
+}
+
+#paginator{
+
 }

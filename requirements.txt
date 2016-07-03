@@ -1,4 +1,10 @@
+#Programms
+Python 3.4
+Postgresql(https://www.postgresql.org/download/)
+
 # Framework
-Django==1.9
+Django==1.9 (pip install django)
 
 # Libs
+Pillow (pip install pillow)
+psycopg2 (pip install psycopg2)

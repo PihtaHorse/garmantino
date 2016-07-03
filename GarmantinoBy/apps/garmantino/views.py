@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from .models import Category, Item, Image, Property, ItemOnHomePage
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from django.core.paginator import Paginator
 from random import shuffle
 from django.conf import settings
 
@@ -48,9 +49,11 @@ def search(request):
     question = ''
     items = []
     results = []
+    page_number = 1
 
     if request.method == 'GET':
         question = request.GET.get("question", "")
+        page_number = request.GET.get("page", "1")
         items = Item.objects.filter(name__icontains=question)
 
         for item in items:
@@ -66,7 +69,8 @@ def search(request):
                 result['photo'] = settings.DEFAULT_PHOTO_URL
             results.append(result)
 
-    context = {'results': results, 'question': question}
+    current_page = Paginator(results, 2)
+    context = {'results': current_page.page(page_number), 'question': question}
     return render(request, 'search.html', context)
 
 

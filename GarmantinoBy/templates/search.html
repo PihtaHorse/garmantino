@@ -19,7 +19,7 @@
 
 		{%include 'logos_box_center.html'%}
 
-		<div class='search-results'>
+		<div id='search-results'>
             <p>Результаты поиска на вопрос "{{ question }}":</p>
             {% for item in results %}
 				
@@ -37,8 +37,31 @@
 					<img src='{{ item.photo }}' class='pic' title='{{ item.name }}'>
 				</a>
             {% endfor%}
-
 		</div>
+
+        <div id='paginator'>
+            <ul class='pagination'>
+                {% if results.has_previous %}
+                    <li><a class='button-left' href='{% url "search"%}?question={{ question }}&page={{ results.previous_page_number }}'> <i class="fa fa-angle-left"> </i> </a></li>
+				{%else%}
+					<li><a class='button-left-unavialable'> <i class="fa fa-angle-left"> </i> </a></li>
+                {%endif%}
+				
+				{%for page in results.paginator.page_range%}
+					{%if page == results.number%}
+						<li><a class='current-page' href='{% url "search"%}?question={{ question }}&page={{ page }}'> {{page}} </a></li>
+					{%else%}
+						<li><a href='{% url "search"%}?question={{ question }}&page={{ page }}'> {{page}} </a></li>
+					{%endif%}
+				{%endfor%}
+				
+				{% if results.has_next %}
+                    <li><a class='button-right' href='{% url "search"%}?question={{ question }}&page={{ results.next_page_number }}'> <i class="fa fa-angle-right"> </i> </a></li>
+				{%else%}
+					<li><a class='button-right-unavialable'> <i class="fa fa-angle-right"> </i> </a></li>
+                {%endif%}
+            </ul>
+        </div>
 
 		{%include 'footer.html'%}
 
