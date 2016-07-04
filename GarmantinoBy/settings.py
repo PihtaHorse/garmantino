@@ -110,4 +110,4 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-DEFAULT_PHOTO_URL = '/media/imgs/items/default-item.jpg'
+DEFAULT_PHOTO_URL = '/static/imgs/default-item.jpg'
