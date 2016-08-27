@@ -49,26 +49,30 @@
 }
 
 #nav-bar form{
-    padding-top: 5px; 
+    padding-top: 3px;
+    padding-bottom: 3px; 
     min-height: 40%;
     display: flex;
     justify-content: center;
     align-items: stretch;
 }
 
-#search{
+#nav-bar form input[name='question']{
    border: 1px solid #959492; 
    background-color: rgba(255, 255, 255, 0) !important; 
-   outline: none; 
-   color: #857e7e; 
-   font-size: 14px;
+   outline: none;  
+   padding: 0px 0px 0px 3px;
+   color: #857e7e;
+   font-size: 15px;
+   font-family: 'DidactGothic';
 }
 
-#search:focus {
-    background-color: rgba(255, 255, 255, 0) !important; 
+#nav-bar form input[name='question']:focus {
+    background-color: rgba(255, 255, 255, 0) !important;
 }
 
-#nav-bar input[type='submit']{
+#nav-bar form input[type='submit']{
+    cursor: pointer;
     min-width: 15%;
     background-image: url("../imgs/search.png");
     background-position: center; 
@@ -79,6 +83,6 @@
     background-color: rgba(255, 255, 255, 0) !important;
 }
 
-#nav-bar input[type='submit']:focus{
+#nav-bar form input[type='submit']:focus{
     outline: none;
 }

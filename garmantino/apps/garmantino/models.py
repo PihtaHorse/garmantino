@@ -104,6 +104,8 @@ class Item(models.Model):
                                   default='c',
                                   verbose_name='Приоритетность')
 
+    description = models.TextField(max_length=300, verbose_name='Описание', null=True, blank=True)
+
     def clean(self):
         pass
 

@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'^catalogue/$', views.catalogue, name='catalogue'),
     url(r'^catalogue/category/(?P<category_id>[0-9]+)/$', views.category, name='category'),
-    url(r'^item/(?P<item_id>[0-9]+)/$', views.item, name='item'),
+    url(r'^item/(?P<item_id>[0-9]+)/$', views.ItemView.as_view(), name='item'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

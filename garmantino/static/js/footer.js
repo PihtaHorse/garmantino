@@ -1,2 +1,2 @@
-var buttonToTop = document.querySelector(".move-up .fa-angle-up");
+var buttonToTop = document.getElementById("button-move-up");
 buttonToTop.addEventListener("click", function(){window.scrollTo(0, 0)});

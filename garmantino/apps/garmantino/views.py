@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.paginator import Paginator
 from random import shuffle
 from django.conf import settings
+from django.views.generic import View
 
 CELLS_NUMBER = [0, 3, 7, 10, 14, 17, 21, 24, 28, 31, 35]
                # 0  3  4   3   4   3   4   3   4   3   4   Колличество свбодных клеток в ряду
@@ -143,3 +144,13 @@ def item(request, item_id):
 
     context = {'item': item, 'photos_urls': photos_urls, 'properties': properties}
     return render(request, 'item.html', context)
+
+
+class ItemView(View):
+    def get(self, request, item_id):
+        item = Item.objects.get(id=item_id)
+        photos_urls = [image_object.photo.url for image_object in Image.objects.filter(item_id=item_id)]
+        properties = Property.objects.filter(item_id=item_id)
+
+        context = {'item': item, 'photos_urls': photos_urls, 'properties': properties}
+        return render(request, 'item.html', context)
