@@ -22,9 +22,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.index, name='index'),
-    url(r'^search/$', views.search, name='search'),
-    url(r'^catalogue/$', views.catalogue, name='catalogue'),
-    url(r'^catalogue/category/(?P<category_id>[0-9]+)/$', views.category, name='category'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^search/$', views.SearchView.as_view(), name='search'),
+    url(r'^catalogue/$', views.CatalogueView.as_view(), name='catalogue'),
+    url(r'^catalogue/category/(?P<category_id>[0-9]+)/$', views.CategoryView.as_view(), name='category'),
     url(r'^item/(?P<item_id>[0-9]+)/$', views.ItemView.as_view(), name='item'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

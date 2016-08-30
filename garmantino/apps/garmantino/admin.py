@@ -15,7 +15,7 @@ class ImageInline(admin.TabularInline):
 
 
 class ItemAdmin(admin.ModelAdmin):
-    inlines = ( PropertyInline, ImageInline)
+    inlines = (PropertyInline, ImageInline)
     list_display = ('name', 'status', 'importance', 'pub_date')
     list_filter = ('status', 'category')
     search_fields = ('name',)
@@ -34,6 +34,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
     get_parent_category_name.short_description = 'Родительская категория'
 
+
+class ItemOnHomePageAdmin(admin.ModelAdmin):
+    list_display = ('item', 'position', 'pub_date')
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(ItemOnHomePage)
+admin.site.register(ItemOnHomePage, ItemOnHomePageAdmin)

@@ -1,17 +1,29 @@
 "use strict";
-var imgs, links, i, n, repeatFunction, repeatFunctionCalls;
+var animated_hexagons, i, n, animation_duration, animation_delay;
+var wrapper = document.getElementsByClassName('hexagons-wrapper')[0];
+var oddRow = "'hexagon-row-odd'", evenRow = "'hexagon-row-even'";
+var rowsNumber = wrapper.children.length;
 
-imgs = document.querySelectorAll("a > img");
-links = document.querySelectorAll("div .hexagon-part2 > a");
-n = imgs.length;
-repeatFunctionCalls = 1;
+if(rowsNumber % 2) {
+    addRow(6, evenRow);
+    addRow(5, oddRow);
+    addRow(6, evenRow);
+}
+else {
+    addRow(5, oddRow);
+    addRow(6, evenRow);
+}
 
-repeatFunction = function(img, a, i){
-    a.href = item_urls[repeatFunctionCalls % n];
-    img.src = photos_urls[repeatFunctionCalls % n];
-    repeatFunctionCalls++;
-};
 
-for(i = 0; i < n; i++){
-    imgs[i].addEventListener("animationiteration", repeatFunction(imgs[i], links[i], i));
+animated_hexagons = document.querySelectorAll(".animated");
+n = animated_hexagons.length;
+animation_duration = 6.25 * n;
+
+for (i = 0; i < n; i++) {
+    animation_delay = -6.25 * i;
+    animated_hexagons[i].style.animationName = 'anim1';
+    animated_hexagons[i].style.animationDuration = animation_duration.toString() + 's';
+    animated_hexagons[i].style.animationTimingFunction = 'linear';
+    animated_hexagons[i].style.animationDelay = animation_delay.toString() + 's';
+    animated_hexagons[i].style.animationIterationCount = 'infinite';
 }

@@ -42,7 +42,7 @@
 				<div id='hexagon-description'>
 					<div id='button-right'> <i class="fa fa-angle-right"> </i> </div>
 					<div id='description'>
-						<p>{{ item.name|title }}</p>
+						<p>{{ item_name|title }}</p>
 						{% for property in properties %}
                             <p> {{ property.name }} <a href='#'> {{ property.value }} </a></p>
                         {% empty %}
