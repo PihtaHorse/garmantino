@@ -15,47 +15,13 @@ time, mark, audio, video {
 }
 
 body {
-	background: white; /*#959492*/
+	background: white;
 	overflow-y: hidden;
-}
-
-.hexagon {
-	min-width: 20vw;
-	height: 23.094vw; /* 20 * 2/sqrt(3) */
-}
-
-.hexagons-wrapper:first-child{
-	margin-top: -22%;
+    font-family: 'DidactGothic', Verdana;
 }
 
 .hexagons-wrapper:last-child{
 	height: 17.3vw;
-}
-
-.menu{
-    width: 100%;
-	height: 100%;
-    background-image: url("../imgs/index-menu.jpg");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: 50%;
-}
-
-.menu ul{
-	padding-top: 55%;
-	list-style: none;
-	text-align: center;
-}
-
-.menu a {
-	font-family: 'DidactGothic';
-	text-decoration: none;
-	font-size: 18pt;
-	color: #4D4C4A;
-}
-
-.menu a:hover {
-	color: #922C2A;
 }
 
 @keyframes anim1 {
@@ -65,36 +31,6 @@ body {
 	31.25%   {opacity: 0; cursor: default;}
     100% {opacity: 0; cursor: default;}
 }
-/*
-#pic1{
-	animation: anim1 25s linear 0s infinite;
-}
-
-#pic2{
-	animation-name: anim1;
-    animation-duration: 25s;
-    animation-timing-function: linear;
-    animation-delay: -6.25s;
-    animation-iteration-count: infinite;
-}
-
-#pic3{
-	animation-name: anim1;
-    animation-duration: 25s;
-    animation-timing-function: linear;
-    animation-delay: -12.25s;
-    animation-iteration-count: infinite;
-}
-
-#pic4{
-    animation-name: anim1;
-    animation-duration: 25s;
-    animation-timing-function: linear;
-    animation-delay: -18.75s;
-    animation-iteration-count: infinite;
-}
-
-*/
 
 .hexagon img{
 	width: 100%;

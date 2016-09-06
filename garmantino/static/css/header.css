@@ -1,88 +1,184 @@
-#nav-bar{
+#header{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: flex-end;
-    align-items: stretch;
-    
+    justify-content: space-between;
+    align-items: center;
+
     top: 0;
     position: relative;
     z-index: 99;
-    opacity: 0.9;
-    
-    min-height: 35px;
+
+    min-height: 30px;
     background-color: white;
+
+    padding-right: 15px;
+    padding-left: 65px;
 }
 
-#nav-bar a{
-	text-decoration: none;
-    color: #575757;
-	font-size: 16pt;
-}
-
-#nav-bar .this-page-link{
-   color: #A42926 !important; 
+#nav-bar-menu{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 50.5%;
 }
 
 #logo-gray{
-    padding-top: 4px; 
+    padding-top: 3px;
+    margin-right: 45px;
     height: 30px;
 }
 
-#nav-bar > div{
+.nav-bar-menu-item{
+    margin-right: 20px;
+}
+
+#nav-bar-menu:last-child{
+    margin-right: 0;
+}
+
+#header a{
+    text-decoration: none;
+    white-space: nowrap;
+    color: #575757;
+	font-size: 1em;
+}
+
+#header a:hover{
+    color: #A42926;
+    text-decoration: underline;
+}
+
+#nav-bar-left-part{
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
-    margin-right: 3%;
 }
 
-#nav-bar > a:first-child{
-    margin-right: 4%;
+#social-icons{
+    display: flex;
+    margin-right: 50px;
 }
 
-#nav-bar > div:last-child{
-    margin-right: 2%;
-}
-
-#nav-bar i{
-    margin: 0 15px 0 5px;
+#social-icons i{
+    margin-right: 20px;
+    font-size: 1.7em;
     color: #857e7e; 
 }
 
-#nav-bar form{
-    padding-top: 3px;
-    padding-bottom: 3px; 
-    min-height: 40%;
+#header form{
+    height: 21px;
     display: flex;
     justify-content: center;
     align-items: stretch;
 }
 
-#nav-bar form input[name='question']{
-   border: 1px solid #959492; 
+#header form input[name='question']{
+   width: 145px;
+   border: 1px solid rgb(180, 180, 180);
    background-color: rgba(255, 255, 255, 0) !important; 
    outline: none;  
-   padding: 0px 0px 0px 3px;
+   padding: 0px 0px 2px 10px;
    color: #857e7e;
-   font-size: 15px;
+   font-size: 1em;
    font-family: 'DidactGothic';
 }
 
-#nav-bar form input[name='question']:focus {
+#header form input[name='question']:focus {
     background-color: rgba(255, 255, 255, 0) !important;
 }
 
-#nav-bar form input[type='submit']{
+#header form input[type='submit']{
     cursor: pointer;
     min-width: 15%;
     background-image: url("../imgs/search.png");
     background-position: center; 
     background-repeat: no-repeat;
     background-size: contain;
-    border: 1px solid #959492;
+    border: 1px solid rgb(180, 180, 180);
+    border-left: none;
     color: #959492;
     background-color: rgba(255, 255, 255, 0) !important;
 }
 
-#nav-bar form input[type='submit']:focus{
+#header form input[type='submit']:focus{
     outline: none;
+}
+
+/* dropdown menu*/
+.dropdown{
+    position: relative;
+}
+
+.drop-menu{
+    top: -9999em;
+    position: absolute;
+    padding-top: 25px;
+}
+
+.dropdown:hover .drop-menu{
+    top: 100%;
+}
+
+.drop-menu-content{
+    position: relative;
+    background: #FFFFFF;
+    border: solid 1px #b8b8b8;
+    list-style-type: none;
+    padding: 2px 25px 5px 10px;
+    right: 10px;
+}
+
+.drop-menu-content:after,
+.drop-menu-content:before{
+    content: '';
+    display: block;
+    position: absolute;
+    border-style: solid;
+}
+
+.drop-menu-content:after{
+    border-width: 0 20px 10px;
+    border-color: white transparent;
+    top: -10px;
+    left: 12px;
+}
+
+.drop-menu-content:before{
+    border-width: 0 21px 10px;
+    border-color: #b8b8b8 transparent;
+    top: -11px;
+    left: 11px;
+}
+
+.drop-menu-content li{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.drop-menu-content li img{
+    height: 9px;
+    padding-top: 1px;
+    margin-right: 5px;
+}
+
+.drop-menu-content li .category{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.drop-menu-content li .sub-category{
+    padding-left: 15px;
+    font-size: 16px;
+}
+
+@font-face{
+    font-family: 'DidactGothic';
+    src: url(../fonts/DidactGothic/DidactGothic.ttf);
+    font-weight: normal;
 }

@@ -19,41 +19,50 @@
 
 	<body>
 		{%include 'header.html'%}
+
+        {%include 'logos_box_center.html'%}
         
 		<div class='hexagon-row-odd' id='first-row'>
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
 			</div></div></div>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
 			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
 			</div></div></div>
 		</div>
 		
 		<div class='hexagon-row-even' id='middle-row'>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<div class='hexagon-white'>
-					<div id='button-left'> <i class="fa fa-angle-left"> </i> </div>
-				</div>
+			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+                <div id='button-left'> <i class="fa fa-angle-left"> </i> </div>
 			</div></div></div>
+
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-					<img id='image-slider' src={{ photos_urls|first }}>
+					<img id='slider' src={{ photos_urls|first }}>
 			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+
+            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 ddd'>
 				<div id='hexagon-description'>
-					<div id='button-right'> <i class="fa fa-angle-right"> </i> </div>
+
+                    <div id='button-right'> <i class="fa fa-angle-right"> </i> </div>
+
 					<div id='description'>
-						<p>{{ item_name|title }}</p>
-						{% for property in properties %}
-                            <p> {{ property.name }} <a href='#'> {{ property.value }} </a></p>
-                        {% empty %}
-                            'На данный момент характеристик - нет!'
-                        {% endfor %}
+						<div id="item-title">{{ item_name|title }}</div>
+                        <div id="properties">
+                            {% for property in properties %}
+                                <div class="property">
+                                    <div class="property-name"> {{ property.name }}</div>
+                                    <div class="property-name"> {{ property.value }} </div>
+                                </div>
+                            {% empty %}
+                                'На данный момент характеристик - нет!'
+                            {% endfor %}
+                        </div>
 					</div>
-					<div class='nothing'></div>
+
 				</div>
 			</div></div></div>
+
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<div class='hexagon-white'></div>
 			</div></div></div>
 		</div>
 		

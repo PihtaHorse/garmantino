@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from django.views.generic import View
 from .additionalModules.pack_in_rows import PackInRows
+from itertools import chain, cycle
 
 
 class IndexView(View):
@@ -26,7 +27,7 @@ class IndexView(View):
         items_positions, photos_urls, items_ids = IndexView.get_data_from_db()
 
         rows = PackInRows.pack_in_rows_by_position([4, 5],
-                                                   [pos-1 for pos in items_positions],
+                                                   [pos - 1 for pos in items_positions],
                                                    ['item_id', items_ids],
                                                    ['item_photo_url', photos_urls])
 
@@ -50,7 +51,7 @@ class CatalogueView(View):
     def get(request):
         positions, ids, names, photos = CatalogueView.get_data_from_db()
 
-        rows = PackInRows.pack_in_rows_by_position([4, 3],
+        rows = PackInRows.pack_in_rows_by_position(chain([3], cycle([4, 5])),
                                                    positions,
                                                    ['name', names], ['id', ids], ['photo', photos])
 
@@ -74,7 +75,7 @@ class CategoryView(View):
     def get(request, category_id):
         items_names, items_ids, items_first_photo = CategoryView.get_data_from_db(category_id)
 
-        rows = PackInRows.pack_in_rows_by_order([4, 3],
+        rows = PackInRows.pack_in_rows_by_order(chain([3], cycle([4, 5])),
                                                 ['name', items_names],
                                                 ['id', items_ids],
                                                 ['photo', items_first_photo])
@@ -88,6 +89,7 @@ class ItemView(View):
     def get_data_from_db(item_id):
         item = Item.objects.get(id=item_id)
         photos_urls = [image_object.photo.url for image_object in Image.objects.filter(item_id=item_id)]
+        photos_urls = photos_urls if photos_urls else [settings.DEFAULT_PHOTO_URL]
         properties = Property.objects.filter(item_id=item_id)
 
         return item.name, properties, photos_urls
@@ -111,9 +113,9 @@ class SearchView(View):
         items_first_photos = [photos.first().photo.url if photos.count() else settings.DEFAULT_PHOTO_URL
                               for photos in items_photos]
         items_categories = [Category.objects.filter(item=item) for item in items]
-        print('*'*100, items_categories, '*'*100, sep='\n')
+        print('*' * 100, items_categories, '*' * 100, sep='\n')
         items_categories = [[{'id': category.id, 'name': category.name}
-                            for category in categories]
+                             for category in categories]
                             for categories in items_categories]
 
         return items_ids, items_names, items_first_photos, items_categories

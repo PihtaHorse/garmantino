@@ -14,6 +14,33 @@ time, mark, audio, video, button {
     background:transparent;
 }
 
+/*css for fixed header*/
+
+html, body, #page{
+  height: 100%; /* needed for proper layout */
+}
+
+body {
+  overflow: hidden;
+}
+
+#page {
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  flex: 0 0 auto;
+}
+
+#page-content {
+  flex: 1 1 auto;
+  position: relative;/* need this to position inner content */
+  overflow-y: auto;
+}
+
+/*other css*/
+
 body {
 	background: white;
     font-family: 'DidactGothic';
@@ -25,26 +52,26 @@ body {
     justify-content: center;
     align-items: center;
     
-    margin-top: 35px;
+    margin-top: 45px;
     margin-bottom: 2%;
 }
 
 #logo-red{
-    max-width: 36px;
+    max-width: 55px;
 }
 
 #garmantino-red{
-    max-width: 256px;
+    max-width: 310px;
     margin-top: -10px;
 }
 
-#good-furniture-red{
-    max-width: 170px;
+.hexagon img{
+	width: 100%;
+	height: 100%;
 }
 
-.hexagon {
-	min-width: 25vw;
-	height: 28.8675vw; /* 25 * 2/sqrt(3) */
+.hexagons-wrapper:last-child{
+	height: 17.3vw;
 }
 
 .hexagon-part2 {
@@ -64,14 +91,6 @@ body {
     margin-bottom: -75px;
 }
 
-.hexagon-row-even, .hexagon-row-odd{
-    margin-top: -7.35%;
-}
-
-.hexagon-row-even .hexagon:first-child{
-	margin-left: -12.5% !important;
-}
-
 .pic{
     background-color: white;
 	width: 100%;
@@ -82,16 +101,11 @@ body {
     opacity: 0.8;
 }
 
-#puzzle{
-    background-image: url("../imgs/pic11.jpg");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: 50%;
-}
-
-#puzzle:hover{
-    background-image: url("../imgs/pic10.jpg");
-    opacity: 1;
+.hexagons-wrapper > :first-child > :first-child .hexagon-part2,
+.hexagons-wrapper > :first-child > :last-child .hexagon-part2,
+.hexagons-wrapper > :nth-child(2) > :first-child .hexagon-part2,
+.hexagons-wrapper > :nth-child(2) > :last-child .hexagon-part2{
+    background: white;
 }
 
 @font-face{

@@ -1,4 +1,4 @@
-from itertools import cycle
+from itertools import cycle, chain
 
 
 class PackInRows:
@@ -26,15 +26,16 @@ class PackInRows:
         return row, cell_counter
 
     @staticmethod
-    def pack_in_rows_by_position(cells_in_rows, positions, *properties):
-        row_len = cycle(cells_in_rows)
+    def pack_in_rows_by_position(cells_in_rows, positions, *properties, firsts_rows_lens=[]):
+        row_len_iterator = iter(cells_in_rows)
+        firsts_rows_lens_iterator = iter(firsts_rows_lens)
         positions = list(sorted(positions))
         cells = PackInRows.make_cells(len(positions), properties)
 
         rows, cell_counter = [], 0
 
         while positions:
-            row, cell_counter = PackInRows.make_row_by_position(next(row_len), cells, positions, cell_counter)
+            row, cell_counter = PackInRows.make_row_by_position(next(row_len_iterator), cells, positions, cell_counter)
             rows.append(row)
 
         return rows
@@ -52,8 +53,7 @@ class PackInRows:
 
     @staticmethod
     def pack_in_rows_by_order(cells_in_rows, *properties):
-        row_len = cycle(cells_in_rows)
-        print(min([len(values) for name, values in properties]))
+        row_len = iter(cells_in_rows)
         cells = PackInRows.make_cells(min([len(values) for name, values in properties]), properties)
 
         rows = []
@@ -65,12 +65,14 @@ class PackInRows:
         return rows
 
 if __name__ == '__main__':
-    cells_in_rows = [2, 3]
-    positions = [1, 5, 8, 2, 4, 3]
-    property_one = ['one', [11, 12, 13, 14, 15, 16]]
-    property_two = ['two', [21, 22, 23, 24, 25, 26]]
+    property_one = ['one', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]]
+    property_two = ['two', ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o']]
 
+    cells_in_rows = chain([5], cycle([2, 3]))
+    positions = [1, 5, 8, 2, 4, 3]
     rows_positions = PackInRows.pack_in_rows_by_position(cells_in_rows, positions, property_one, property_two)
+
+    cells_in_rows = chain([5], cycle([2, 3]))
     rows_order = PackInRows.pack_in_rows_by_order(cells_in_rows, property_one, property_two)
 
     print('Positions:\n')

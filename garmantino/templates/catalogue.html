@@ -4,7 +4,7 @@
     
 	<head>
 		<meta charset="UTF-8">
-		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
+        <link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
 		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
 		<link rel='stylesheet' href='{% static "css\header.css" %}'>
 		<link rel='stylesheet' href='{% static "css\footer.css" %}'>
@@ -14,44 +14,48 @@
 	</head>
 
 	<body>
-		{%include 'header.html'%}
-		
-		{%include 'logos_box_center.html'%}
+        <div id="page">
+            {%include 'header.html'%}
 
-		<div class='hexagons-wrapper'>
-            {% for row in rows %}
+            <div id="page-content">
+                {%include 'logos_box_center.html'%}
 
-                <div class= '{% if row|length == 3%} hexagon-row-even {% else %} hexagon-row-odd {% endif %}'>
-                    {% if row|length == 3%}
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                    {% endif %}
+                <div class='hexagons-wrapper'>
+                    {% for row in rows %}
 
-                    {% for category in row %}
-                        {% if category %}
-                            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
-                                <a href='{% url "category" category.id %}'> <img src='{{ category.photo }}' class='pic' title='{{ category.name }}'> </a>
-                            </div></div></div>
-                        {% else %}
-                            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                            </div></div></div>
-                        {% endif %}
+                        <div class= '{% if row|length == 4%} hexagon-row-even {% else %} hexagon-row-odd {% endif %}'>
+                            {% if row|length == 4 or forloop.counter == 1%}
+                                <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+                                </div></div></div>
+                            {% endif %}
+
+                            {% for category in row %}
+                                {% if category %}
+                                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
+                                        <a href='{% url "category" category.id %}'> <img src='{{ category.photo }}' class='pic' title='{{ category.name }}'> </a>
+                                    </div></div></div>
+                                {% else %}
+                                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                                    </div></div></div>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if row|length == 4 or forloop.counter == 1%}
+                                <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+                                </div></div></div>
+                            {% endif %}
+                        </div>
+
                     {% endfor %}
-
-                    {% if row|length == 3%}
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                    {% endif %}
                 </div>
 
-            {% endfor %}
+                {%include 'footer.html'%}
+            </div>
+
+            <script src='{% static "js/hexagon_rows.js" %}'></script>
+            <script src='{% static "js/catalogue.js" %}'></script>
+            <script src='{% static "js/footer.js" %}'></script>
         </div>
-
-		{%include 'footer.html'%}
-
-        <script src='{% static "js/hexagon_rows.js" %}'></script>
-		<script src='{% static "js/catalogue.js" %}'></script>
-        <script src='{% static "js/footer.js" %}'></script>
     </body>
     
 </html>

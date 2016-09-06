@@ -3,12 +3,12 @@ var oddRow = "'hexagon-row-odd'", evenRow = "'hexagon-row-even'";
 var rowsNumber = wrapper.children.length;
 
 if(rowsNumber % 2){
-    addRow(5, evenRow);
+    addRow(6, evenRow);
 }
 else {
-    addRow(4, oddRow);
+    addRow(5, oddRow);
 }
 
 if(rowsNumber == 0) {
-    addRow(5, evenRow);
+    addRow(6, evenRow);
 }

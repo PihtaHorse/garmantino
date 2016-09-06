@@ -1,7 +1,7 @@
 "use strict"
 
 var i = 0, lastNumber = 0, n,
-    img = document.getElementById("image-slider"),
+    img = document.getElementById("slider"),
     buttonLeft = document.getElementById("button-left"),
     buttonRight = document.getElementById("button-right");
     n = paths.length;

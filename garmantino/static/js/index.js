@@ -4,7 +4,7 @@ var wrapper = document.getElementsByClassName('hexagons-wrapper')[0];
 var oddRow = "'hexagon-row-odd'", evenRow = "'hexagon-row-even'";
 var rowsNumber = wrapper.children.length;
 
-if(rowsNumber % 2) {
+if(rowsNumber % 2 == 0) {
     addRow(6, evenRow);
     addRow(5, oddRow);
     addRow(6, evenRow);

@@ -23,6 +23,7 @@ function getDocHeight() {
 }
 
 
+/*
 onElementHeightChange(document.body, function(){
     D = document;
     console.log('scrollHeight: ' + D.body.scrollHeight.toString());
@@ -44,4 +45,5 @@ document.body.addEventListener("resize", function(){
     console.log('clientHeight: ' + D.documentElement.clientHeight.toString());
     console.log('height: ' + getDocHeight().toString());
 });
+*/
 

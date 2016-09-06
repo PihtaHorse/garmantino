@@ -1,21 +1,46 @@
 {% load staticfiles %}
-<nav id='nav-bar'>
-	<a href='{% url "index" %}'> <img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'> </a>
-	<div> <a href='{% url "catalogue" %}' class='this-page-link'> Каталог </a> </div>
-	<div> <a href='#'> Конструктор </a> </div>
-	<div> <a href='#'> Контакты </a> </div>
-	<div> <a href='#'> О нас </a> </div>
-	<div> <a href='#'> Задать вопрос </a> </div>
-	<div>
-		<a href='#'> <i class="fa fa-facebook-square">  </i> </a>
-		<a href='#'> <i class="fa fa-vk">  </i> </a>
-	</div>
-			
-	<div>
-		<form action='{% url "search"%}' method='get' >
-			<input type='text' name='question' id='search' placeholder='Поиск'>
-			<input type="hidden" name='page' value='1'>
-			<input type='submit' value=''>
-		</form>
-	</div>
+<nav id='header'>
+
+    <div id="nav-bar-menu">
+        <a href='{% url "index" %}'> <img id='logo-gray' src='{% static "imgs/logo-gray.png" %}'> </a>
+        <div class='nav-bar-menu-item'>
+            <div class='dropdown'>
+                <a href='{% url "catalogue" %}'> Каталог  </a>
+                <div class='drop-menu'>
+                    <ul class="drop-menu-content">
+                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Столы:</a> </div>
+                                <ul class="sub-category">
+                                    <a href="">простые</a>
+                                    <a href="">раздвижные</a>
+                                    <a href="">распашные</a>
+                                    <a href="">из массива дуба</a>
+                                </ul>
+                        </li>
+                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Стулья</a> </div> </li>
+                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Скамьи</a> </div> </li>
+                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Табуреты</a> </div> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class='nav-bar-menu-item'> <a href='#'> Контакты </a> </div>
+        <div class='nav-bar-menu-item'> <a href='#'> О компании </a> </div>
+        <div class='nav-bar-menu-item'> <a href='#'> Задать вопрос </a> </div>
+        <div class='nav-bar-menu-item'> <a href='#'> English Version </a> </div>
+    </div>
+
+    <div id="nav-bar-left-part">
+        <div id="social-icons">
+            <a href='#'> <i class="fa fa-vk">  </i> </a>
+            <a href='#'> <i class="fa fa-facebook-square">  </i> </a>
+            <a href='#'> <i class="fa fa-instagram"  aria-hidden="true"></i> </a>
+        </div>
+
+        <form action='{% url "search"%}' method='get' >
+            <input type='text' name='question' id='search' placeholder='Поиск'>
+            <input type="hidden" name='page' value='1'>
+            <input type='submit' value=''>
+        </form>
+    </div>
+
 </nav>
