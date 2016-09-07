@@ -33,32 +33,35 @@
 		
 		<div class='hexagon-row-even' id='middle-row'>
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
-                <div id='button-left'> <i class="fa fa-angle-left"> </i> </div>
+                <div id='button-left'> <div class="button"></div> </div>
 			</div></div></div>
 
 			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
 					<img id='slider' src={{ photos_urls|first }}>
 			</div></div></div>
 
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 ddd'>
-				<div id='hexagon-description'>
+            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+				<div id='hexagon-with-description'>
+                        <div id="item-title">{{ item_name|title }}</div>
 
-                    <div id='button-right'> <i class="fa fa-angle-right"> </i> </div>
+                        <div id='description'>
+                            <div id='button-right'> <div class="button"></div> </div>
 
-					<div id='description'>
-						<div id="item-title">{{ item_name|title }}</div>
-                        <div id="properties">
-                            {% for property in properties %}
-                                <div class="property">
-                                    <div class="property-name"> {{ property.name }}</div>
-                                    <div class="property-name"> {{ property.value }} </div>
-                                </div>
-                            {% empty %}
-                                'На данный момент характеристик - нет!'
-                            {% endfor %}
+                            <div id="properties">
+                                {% for property in properties %}
+                                    <div class="property">
+                                        <div class="property-name"> {{ property.name }}</div>
+                                        <div class="property-value"> {{ property.value }} </div>
+                                    </div>
+                                {% empty %}
+                                    'На данный момент характеристик - нет!'
+                                {% endfor %}
+                            </div>
                         </div>
-					</div>
 
+                        <div id="remark"><p>Параметры, отмеченные знаком "*", могут быть изменены при оформлении заказа</p></div>
+
+                        <div id="checkout"><a href="#">Оформить заказ</a></div>
 				</div>
 			</div></div></div>
 
