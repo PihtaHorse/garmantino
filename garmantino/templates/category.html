@@ -3,6 +3,9 @@
 <html lang='ru' xmlns="http://www.w3.org/1999/html">
     
 	<head>
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static "imgs/apple-touch-icon.png" %}">
+        <link rel="icon" type="image/png" href={% static "imgs/favicon-32x32.png" %} sizes="32x32">
+        <link rel="icon" type="image/png" href={% static "imgs/favicon-16x16.png" %} sizes="16x16">
 		<meta charset="UTF-8">
 		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
 		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
@@ -18,7 +21,7 @@
             {%include 'header.html'%}
 
             <div id="page-content">
-                {%include 'logos_box_center.html'%}
+                <div id="logo-big-wrapper"> <img id="logo-big" src='{% static "imgs/logo-big.png" %}'> </div>
 
                 <div class='hexagons-wrapper'>
                     {% for row in rows %}

@@ -46,23 +46,18 @@ body {
     font-family: 'DidactGothic';
 }
 
-.box-center{
+#logo-big-wrapper{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     margin-top: 45px;
     margin-bottom: 2%;
 }
 
-#logo-red{
-    max-width: 55px;
-}
-
-#garmantino-red{
+#logo-big{
     max-width: 310px;
-    margin-top: -10px;
 }
 
 .hexagon img{
@@ -72,10 +67,6 @@ body {
 
 .hexagons-wrapper:last-child{
 	height: 17.3vw;
-}
-
-.hexagon-part2 {
-    background-image: url("../imgs/hexagon-v2.jpg");
 }
 
 .hexagon-with-pic {

@@ -24,10 +24,17 @@
     min-width: 50.5%;
 }
 
-#logo-gray{
+#logo{
     padding-top: 3px;
     margin-right: 45px;
     height: 30px;
+    width: 19px;
+}
+
+#logo:hover{
+    content: url("../imgs/logo-red.png");
+    height: 30px;
+    width: 19px;
 }
 
 .nav-bar-menu-item{

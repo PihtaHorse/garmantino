@@ -20,6 +20,10 @@ body {
     font-family: 'DidactGothic', Verdana;
 }
 
+.hexagon-part2 {
+	background-image: url("../imgs/hexagon-v2.jpg");
+}
+
 .hexagons-wrapper:last-child{
 	height: 17.3vw;
 }
