@@ -24,6 +24,10 @@
     min-width: 50.5%;
 }
 
+#anchor-to-index{
+    display: block;
+}
+
 #logo{
     padding-top: 3px;
     margin-right: 45px;
@@ -31,7 +35,7 @@
     width: 19px;
 }
 
-#logo:hover{
+#anchor-to-index:hover #logo{
     content: url("../imgs/logo-red.png");
     height: 30px;
     width: 19px;
@@ -49,7 +53,8 @@
     text-decoration: none;
     white-space: nowrap;
     color: #575757;
-	font-size: 1em;
+    font-size: 1.0em;
+	font-size: 1.2vw;
 }
 
 #header a:hover{
@@ -70,7 +75,7 @@
 
 #social-icons i{
     margin-right: 20px;
-    font-size: 1.7em;
+    font-size: 2.0vw;
     color: #857e7e; 
 }
 
@@ -82,14 +87,15 @@
 }
 
 #header form input[name='question']{
-   width: 145px;
-   border: 1px solid rgb(180, 180, 180);
-   background-color: rgba(255, 255, 255, 0) !important; 
-   outline: none;  
-   padding: 0px 0px 2px 10px;
-   color: #857e7e;
-   font-size: 1em;
-   font-family: 'DidactGothic';
+    width: 145px;
+    border: 1px solid rgb(180, 180, 180);
+    background-color: rgba(255, 255, 255, 0) !important;
+    outline: none;
+    padding: 0px 0px 2px 10px;
+    color: #857e7e;
+    font-size: 1em;
+    font-size: 1.2vw;
+    font-family: 'DidactGothic';
 }
 
 #header form input[name='question']:focus {
@@ -182,6 +188,7 @@
 .drop-menu-content li .sub-category{
     padding-left: 15px;
     font-size: 16px;
+    font-size: 1vw;
 }
 
 @font-face{

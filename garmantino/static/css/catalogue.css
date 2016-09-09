@@ -14,6 +14,11 @@ time, mark, audio, video, button {
     background:transparent;
 }
 
+a{
+    color: black;
+    text-decoration: none;
+}
+
 /*css for fixed header*/
 
 html, body, #page{
@@ -60,19 +65,6 @@ body {
     max-width: 310px;
 }
 
-.hexagon img{
-	width: 100%;
-	height: 100%;
-}
-
-.hexagons-wrapper:last-child{
-	height: 17.3vw;
-}
-
-.hexagon-with-pic {
-    background: white !important;
-}
-
 .hexagons-wrapper > :first-child{
     margin-top: 0%;
 }
@@ -82,21 +74,98 @@ body {
     margin-bottom: -75px;
 }
 
-.pic{
-    background-color: white;
-	width: 100%;
-    height: 100%;
-}
-
-.pic:hover{
-    opacity: 0.8;
-}
-
 .hexagons-wrapper > :first-child > :first-child .hexagon-part2,
 .hexagons-wrapper > :first-child > :last-child .hexagon-part2,
 .hexagons-wrapper > :nth-child(2) > :first-child .hexagon-part2,
 .hexagons-wrapper > :nth-child(2) > :last-child .hexagon-part2{
     background: white;
+}
+
+.hexagons-wrapper .with-content{
+    background: white;
+}
+
+.hexagon-content{
+    position: relative;
+    width: 100%;
+	height: 100%;
+}
+
+.hexagon-content .pic{
+	width: 100%;
+    height: 100%;
+}
+
+.hexagon-content:hover .pic{
+    opacity: 0.8;
+}
+
+.triangle-wrapper{
+    position: relative;
+    overflow: hidden;
+    bottom: 6vw;
+    height: 4.0vw;
+    transition: 0.3s;
+}
+
+.triangle {
+    position: relative;
+    height: 0;
+    width: 0;
+    border-top: 2.59808vw solid rgba(255, 255, 255, 0.9);
+    border-left: 4.5vw solid transparent;
+    border-right: 4.5vw solid transparent;
+    left: 5.5vw;
+    top: 2.6vw;
+    transition: 0.3s;
+}
+
+.info{
+    position: relative;
+    text-align: center;
+    color: #1b1b1b;
+}
+
+.info-first{
+    font-size: 14px;
+    font-size: 1.0vw;
+    bottom: 5.0vw;
+    visibility: hidden;
+}
+
+.info-second{
+    font-size: 10px;
+    font-size: 0.7vw;
+    bottom: 4.9vw;
+    visibility: hidden;
+}
+
+.info-third{
+    font-size: 14px;
+    font-size: 1.0vw;
+    bottom: 2.25vw;
+}
+
+.hexagon-content:hover .triangle-wrapper{
+    bottom: 6vw;
+    height: 5.19615vw;
+}
+
+.hexagon-content:hover .triangle {
+    border-top: 5.19615vw solid rgba(255, 255, 255, 0.9);
+    border-left: 9vw solid transparent;
+    border-right: 9vw solid transparent;
+    left: 1vw;
+    top: 0;
+}
+
+.hexagon-content:hover .info{
+    visibility: visible;
+}
+
+.hexagon-content:hover .info-third{
+    bottom: 4.9vw;
+    visibility: hidden;
 }
 
 @font-face{

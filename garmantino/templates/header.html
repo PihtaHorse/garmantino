@@ -2,23 +2,29 @@
 <nav id='header'>
 
     <div id="nav-bar-menu">
-        <a href='{% url "index" %}'> <img id='logo' src='{% static "imgs/logo-gray.png" %}'> </a>
+        <a href='{% url "index" %}' id="anchor-to-index"> <img id='logo' src='{% static "imgs/logo-gray.png" %}'> </a>
         <div class='nav-bar-menu-item'>
             <div class='dropdown'>
                 <a href='{% url "catalogue" %}'> Каталог  </a>
                 <div class='drop-menu'>
                     <ul class="drop-menu-content">
-                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Столы:</a> </div>
-                                <ul class="sub-category">
+                        {% for category in categories %}
+                            <li>
+                                <div class="category">
+                                    <img src='{% static "imgs/list-arrow.jpg" %}'>
+                                    <a href="{% url "category" category.id %}">{{ category.name }}:</a>
+                                </div>
+
+                                <!--
+                                 <ul class="sub-category">
                                     <a href="">простые</a>
                                     <a href="">раздвижные</a>
                                     <a href="">распашные</a>
                                     <a href="">из массива дуба</a>
                                 </ul>
-                        </li>
-                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Стулья</a> </div> </li>
-                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Скамьи</a> </div> </li>
-                        <li> <div class="category"> <img src='{% static "imgs/list-arrow.jpg" %}'> <a href="">Табуреты</a> </div> </li>
+                                -->
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

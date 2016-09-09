@@ -33,8 +33,15 @@
 
                             {% for item in row %}
                                 {% if item %}
-                                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-with-pic'>
-                                        <a href='{% url "item" item.id %}'> <img src='{{ item.photo }}' class='pic' title='{{ item.name }}'> </a>
+                                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 with-content'>
+                                        <a href='{% url "item" item.id %}'>
+                                            <div class="hexagon-content">
+                                                <img src='{{ item.photo }}' class='pic' title='{{ item.name }}'>
+                                                <div class="triangle">
+                                                    <div class="info"></div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div></div></div>
                                 {% else %}
                                     <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>

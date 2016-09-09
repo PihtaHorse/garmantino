@@ -5,7 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.views.generic import View
-from .additionalModules.pack_in_rows import PackInRows
+from .services.pack_in_rows import PackInRows
+from .services.services import add_categories_to_context
 from itertools import chain, cycle
 
 
@@ -32,6 +33,7 @@ class IndexView(View):
                                                    ['item_photo_url', photos_urls])
 
         context = {'rows': rows}
+        add_categories_to_context(context)
         return render(request, 'index.html', context)
 
 
@@ -56,6 +58,7 @@ class CatalogueView(View):
                                                    ['name', names], ['id', ids], ['photo', photos])
 
         context = {'rows': rows, 'is_rows_number_odd': len(rows) % 2 == 1}
+        add_categories_to_context(context)
         return render(request, 'catalogue.html', context)
 
 
@@ -81,6 +84,7 @@ class CategoryView(View):
                                                 ['photo', items_first_photo])
 
         context = {'rows': rows, 'is_rows_number_odd': len(rows) % 2 == 1}
+        add_categories_to_context(context)
         return render(request, 'category.html', context)
 
 
@@ -99,7 +103,7 @@ class ItemView(View):
         item_name, properties, photos_urls = ItemView.get_data_from_db(item_id)
 
         context = {'item_name': item_name, 'photos_urls': photos_urls, 'properties': properties}
-
+        add_categories_to_context(context)
         return render(request, 'item.html', context)
 
 
@@ -131,4 +135,5 @@ class SearchView(View):
 
         current_page = Paginator(results, 2)
         context = {'results': current_page.page(page_number), 'question': question}
+        add_categories_to_context(context)
         return render(request, 'search.html', context)

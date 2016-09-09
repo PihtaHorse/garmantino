@@ -53,24 +53,15 @@ body {
 
 #logo-big{
     position: absolute;
-    top: 55px;
-    left: 57%;
+    top: 5vw;
+    left: 58%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    width: 20vw;
-}
-
-#logo-red{
-    width: 3.5vw;
-}
-
-#garmantino-red{
-    width: 20vw;
-    margin-top: -15px;
+    width: 17vw;
 }
 
 /* middle-row */
@@ -138,6 +129,7 @@ body {
     margin-top: 2vw;
     max-width: 75%;
     font-size: 16pt;
+    font-size: 1.6vw;
     text-align: center;
 }
 
@@ -166,13 +158,14 @@ body {
     flex-wrap: nowrap;
     justify-content: space-between;
     font-size: 16px;
+    font-size: 1.2vw;
     color: #1b1b1b;
 }
 
 #properties .property .property-name{
     display: flex;
     text-align: left;
-    max-width: 45%;
+    max-width: 55%;
 }
 
 #properties .property .property-value{
@@ -184,6 +177,7 @@ body {
 #remark{
     width: 68%;
     font-size: 15px;
+    font-size: 1.0vw;
     text-align: center;
     color: #863136;
 }
@@ -196,6 +190,7 @@ body {
 
 #checkout a{
     font-size: 22px;
+    font-size: 1.8vw;
     text-align: center;
     /*text-decoration: underline;*/
     text-decoration: none;
