@@ -1,0 +1,30 @@
+.triangle-wrapper{
+    position: relative;
+    overflow: hidden;
+    bottom: 6vw;
+    height: 1.4vw;
+    transition: 0.3s;
+}
+
+.triangle {
+    position: relative;
+    height: 0;
+    width: 0;
+    border-top: 5.19615vw solid rgba(255, 255, 255, 0.9);
+    border-left: 9vw solid transparent;
+    border-right: 9vw solid transparent;
+    left: 1vw;
+    top: 0;
+}
+
+.info{
+    position: relative;
+    text-align: center;
+    color: #1b1b1b;
+}
+
+.info-first {
+    font-size: 14px;
+    font-size: 1.0vw;
+    bottom: 5.1vw;
+}

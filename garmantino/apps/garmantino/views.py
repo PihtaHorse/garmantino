@@ -57,15 +57,15 @@ class CatalogueView(View):
                                                    positions,
                                                    ['name', names], ['id', ids], ['photo', photos])
 
-        context = {'rows': rows, 'is_rows_number_odd': len(rows) % 2 == 1}
+        context = {'rows': rows}
         add_categories_to_context(context)
-        return render(request, 'catalogue.html', context)
+        return render(request, 'catalogue_categories.html', context)
 
 
 class CategoryView(View):
     @staticmethod
     def get_data_from_db(category_id):
-        items = Item.objects.filter(category=category_id).exclude(status='t').order_by('importance')
+        items = Item.objects.filter(category=category_id, status='y').order_by('importance')
         items_names = [item.name for item in items]
         items_ids = [item.id for item in items]
         items_photos = [Image.objects.filter(item_id=item_id) for item_id in items_ids]
@@ -83,9 +83,9 @@ class CategoryView(View):
                                                 ['id', items_ids],
                                                 ['photo', items_first_photo])
 
-        context = {'rows': rows, 'is_rows_number_odd': len(rows) % 2 == 1}
+        context = {'rows': rows}
         add_categories_to_context(context)
-        return render(request, 'category.html', context)
+        return render(request, 'catalogue_items.html', context)
 
 
 class ItemView(View):
@@ -116,24 +116,20 @@ class SearchView(View):
         items_photos = [Image.objects.filter(item_id=item.id) for item in items]
         items_first_photos = [photos.first().photo.url if photos.count() else settings.DEFAULT_PHOTO_URL
                               for photos in items_photos]
-        items_categories = [Category.objects.filter(item=item) for item in items]
-        print('*' * 100, items_categories, '*' * 100, sep='\n')
-        items_categories = [[{'id': category.id, 'name': category.name}
-                             for category in categories]
-                            for categories in items_categories]
 
-        return items_ids, items_names, items_first_photos, items_categories
+        return items_ids, items_names, items_first_photos
 
     @staticmethod
     def get(request):
         question = request.GET.get("question", "")
-        page_number = request.GET.get("page", "1")
 
-        ids, names, first_photos, categories = SearchView.get_data_from_db(question)
-        properties = [['id', ids], ['name', names], ['photo', first_photos], ['categories', categories]]
-        results = PackInRows.make_cells(len(ids), properties)
+        items_ids, items_names, items_first_photo = SearchView.get_data_from_db(question)
+        rows = PackInRows.pack_in_rows_by_order(chain([3], cycle([4, 5])),
+                                                ['name', items_names],
+                                                ['id', items_ids],
+                                                ['photo', items_first_photo])
 
-        current_page = Paginator(results, 2)
-        context = {'results': current_page.page(page_number), 'question': question}
+        context = {'rows': rows}
         add_categories_to_context(context)
-        return render(request, 'search.html', context)
+
+        return render(request, 'catalogue_search.html', context)

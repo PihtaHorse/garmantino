@@ -52,40 +52,40 @@
 
 				</div>
 			{% endfor %}
-		</div>
 
-        {% if rows|length < 2%}
-            {% if rows|length == 0 %}
-                <div class='hexagon-row-even'>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
+            {% if rows|length < 2%}
+                {% if rows|length == 0 %}
+                    <div class='hexagon-row-even'>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                    </div>
+                {% endif %}
+
+                <div class='hexagon-row-odd'>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                            <a href='{% url "catalogue" %}' > <img src='{% static "imgs/main-logo.png" %}'> </a>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
+                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        </div></div></div>
                 </div>
             {% endif %}
-
-            <div class='hexagon-row-odd'>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        <a href='{% url "catalogue" %}' > <img src='{% static "imgs/main-logo.jpg" %}'> </a>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                    </div></div></div>
-            </div>
-        {% endif %}
+        </div>
 
         <script src='{% static "js/hexagon_rows.js" %}'></script>
         <script src='{% static "js/rowsAutocomplite.js" %}'></script>

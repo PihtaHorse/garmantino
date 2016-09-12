@@ -1,0 +1,73 @@
+.triangle-wrapper{
+    position: relative;
+    overflow: hidden;
+    bottom: 6vw;
+    height: 4.0vw;
+    transition: 0.3s;
+}
+
+.triangle {
+    position: relative;
+    height: 0;
+    width: 0;
+    border-top: 2.59808vw solid rgba(255, 255, 255, 0.9);
+    border-left: 4.5vw solid transparent;
+    border-right: 4.5vw solid transparent;
+    left: 5.5vw;
+    top: 2.6vw;
+    transition: 0.3s;
+}
+
+.info{
+    position: relative;
+    text-align: center;
+    color: #1b1b1b;
+}
+
+.info-first{
+    font-size: 14px;
+    font-size: 1.0vw;
+}
+
+.info-second{
+    font-size: 14px;
+    font-size: 1.0vw;
+    bottom: 6.3vw;
+}
+
+.info-third{
+    font-size: 10px;
+    font-size: 0.7vw;
+    bottom: 6.3vw;
+}
+
+.info-fourth{
+    font-size: 14px;
+    font-size: 1.0vw;
+    bottom: 6.2vw;
+}
+
+.info-second, .info-third, .info-fourth{
+    visibility: hidden;
+}
+
+.hexagon-content:hover .triangle-wrapper{
+    bottom: 6vw;
+    height: 5.19615vw;
+}
+
+.hexagon-content:hover .triangle {
+    border-top: 5.19615vw solid rgba(255, 255, 255, 0.9);
+    border-left: 9vw solid transparent;
+    border-right: 9vw solid transparent;
+    left: 1vw;
+    top: 0;
+}
+
+.hexagon-content:hover .info{
+    visibility: visible;
+}
+
+.hexagon-content:hover .info-first{
+    visibility: hidden;
+}

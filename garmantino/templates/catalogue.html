@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang='ru' xmlns="http://www.w3.org/1999/html">
-    
+
 	<head>
         <link rel="apple-touch-icon" sizes="180x180" href="{% static "imgs/apple-touch-icon.png" %}">
         <link rel="icon" type="image/png" href={% static "imgs/favicon-32x32.png" %} sizes="32x32">
@@ -12,6 +12,7 @@
 		<link rel='stylesheet' href='{% static "css\header.css" %}'>
 		<link rel='stylesheet' href='{% static "css\footer.css" %}'>
 		<link rel='stylesheet' href='{% static "css\catalogue.css" %}'>
+        {% block styles %}{% endblock %}
 		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
 		<title>Garmantino.by</title>
 	</head>
@@ -32,26 +33,7 @@
                                 </div></div></div>
                             {% endif %}
 
-                            {% for category in row %}
-                                {% if category %}
-                                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 with-content'>
-                                        <a href='{% url "category" category.id %}'>
-                                            <div class="hexagon-content">
-                                                <img src='{{ category.photo }}' class='pic' title='{{ category.name }}'>
-                                                <div class="triangle-wrapper">
-                                                    <div class="triangle"></div>
-                                                    <div class="info info-first">Стол развижной обеденный</div>
-                                                    <div class="info info-second">размер:110(150)x62x76(h)</div>
-                                                    <div class="info info-third">420р.0к.</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div></div></div>
-                                {% else %}
-                                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                                    </div></div></div>
-                                {% endif %}
-                            {% endfor %}
+                            {% block content %}{% endblock %}
 
                             {% if row|length == 4 or forloop.counter == 1%}
                                 <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
@@ -70,5 +52,5 @@
             <script src='{% static "js/footer.js" %}'></script>
         </div>
     </body>
-    
+
 </html>

@@ -9,7 +9,8 @@
     position: relative;
     z-index: 99;
 
-    min-height: 30px;
+    height: 30px;
+    height: 2.3vw;
     background-color: white;
 
     padding-right: 15px;
@@ -32,13 +33,13 @@
     padding-top: 3px;
     margin-right: 45px;
     height: 30px;
-    width: 19px;
+    height: 2.2vw;
 }
 
 #anchor-to-index:hover #logo{
     content: url("../imgs/logo-red.png");
     height: 30px;
-    width: 19px;
+    height: 2.2vw;
 }
 
 .nav-bar-menu-item{
@@ -71,16 +72,20 @@
 #social-icons{
     display: flex;
     margin-right: 50px;
+    margin-right: 6vw;
 }
 
 #social-icons i{
     margin-right: 20px;
-    font-size: 2.0vw;
+    margin-right: 1vw;
+    font-size: 25px;
+    font-size: 1.8vw;
     color: #857e7e; 
 }
 
 #header form{
     height: 21px;
+    height: 1.5vw;
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -88,6 +93,7 @@
 
 #header form input[name='question']{
     width: 145px;
+    width: 10vw;
     border: 1px solid rgb(180, 180, 180);
     background-color: rgba(255, 255, 255, 0) !important;
     outline: none;
@@ -128,6 +134,7 @@
     top: -9999em;
     position: absolute;
     padding-top: 25px;
+    padding-top: 1.2vw;
 }
 
 .dropdown:hover .drop-menu{

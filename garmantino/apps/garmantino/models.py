@@ -31,8 +31,7 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
         ordering = ['status']
 
-    @staticmethod
-    def generate_filename(filename):
+    def generate_filename(self, filename):
         url = os.path.join('imgs', 'categories', filename)
         return url
 

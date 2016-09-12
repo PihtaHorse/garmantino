@@ -1,0 +1,32 @@
+{% extends "catalogue.html" %}
+{% load staticfiles %}
+
+{% block styles %}
+    <link rel='stylesheet' href='{% static "css\catalogue_triangle_animation.css" %}'>
+{% endblock %}
+
+{% block content %}
+
+    {% for item in row %}
+        {% if item %}
+            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 with-content'>
+                <a href='{% url "item" item.id %}'>
+                    <div class="hexagon-content">
+                        <img src='{{ item.photo }}' class='pic' title='{{ item.name }}'>
+                        <div class="triangle-wrapper">
+                            <div class="triangle"></div>
+                            <div class="info info-first">420р.0к.</div>
+                            <div class="info info-second">Стол развижной обеденный</div>
+                            <div class="info info-third">размер:110(150)x62x76(h)</div>
+                            <div class="info info-fourth">6 мест</div>
+                        </div>
+                    </div>
+                </a>
+            </div></div></div>
+        {% else %}
+            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+            </div></div></div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
