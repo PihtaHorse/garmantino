@@ -1,14 +1,17 @@
 var wrapper = document.getElementsByClassName('hexagons-wrapper')[0];
-var oddRow = "'hexagon-row-odd'", evenRow = "'hexagon-row-even'";
 var rowsNumber = wrapper.children.length;
+var footer = document.getElementById('footer');
+var oddRow = "'hexagon-row-odd'", evenRow = "'hexagon-row-even'";
 
 if(rowsNumber % 2){
-    addRow(6, evenRow);
+    footer.insertAdjacentHTML('beforebegin', newRow(5, oddRow));
 }
 else {
-    addRow(5, oddRow);
+    footer.insertAdjacentHTML('beforebegin', newRow(6, evenRow));
+    footer.insertAdjacentHTML('beforebegin', newRow(5, oddRow));
 }
 
-if(rowsNumber == 0) {
-    addRow(6, evenRow);
+if(rowsNumber == 1) {
+    footer.insertAdjacentHTML('beforebegin', newRow(6, evenRow));
+    footer.insertAdjacentHTML('beforebegin', newRow(5, oddRow));
 }

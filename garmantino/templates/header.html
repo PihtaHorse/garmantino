@@ -12,17 +12,13 @@
                             <li>
                                 <div class="category">
                                     <img src='{% static "imgs/list-arrow.jpg" %}'>
-                                    <a href="{% url "category" category.id %}">{{ category.name }}:</a>
+                                    <a href="{% url "category" category.id %}">{{ category.name }}{% if category.subcategories %}:{% endif %}</a>
                                 </div>
-
-                                <!--
                                  <ul class="sub-category">
-                                    <a href="">простые</a>
-                                    <a href="">раздвижные</a>
-                                    <a href="">распашные</a>
-                                    <a href="">из массива дуба</a>
+                                    {% for subcategory in category.subcategories %}
+                                         <a href="{% url "category" subcategory.id %}">{{ subcategory.name }}</a>
+                                    {% endfor %}
                                 </ul>
-                                -->
                             </li>
                         {% endfor %}
                     </ul>

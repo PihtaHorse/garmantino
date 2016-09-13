@@ -15,7 +15,7 @@
     border-right: 4.5vw solid transparent;
     left: 5.5vw;
     top: 2.6vw;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 .info{
@@ -37,7 +37,7 @@
 
 .info-third{
     font-size: 10px;
-    font-size: 0.7vw;
+    font-size: 1.0vw;
     bottom: 6.3vw;
 }
 
@@ -66,6 +66,7 @@
 
 .hexagon-content:hover .info{
     visibility: visible;
+    color: rgba(27, 27, 27, 1);
 }
 
 .hexagon-content:hover .info-first{

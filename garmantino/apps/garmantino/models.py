@@ -44,7 +44,11 @@ class Category(models.Model):
                               default=os.path.join('imgs', 'categories', 'default-category.jpg'),
                               verbose_name='Фотография')
 
-    parent_category = models.ForeignKey("self", blank=True, null=True, verbose_name='Родительская категория')
+    parent_category = models.ForeignKey("self",
+                                        blank=True,
+                                        null=True,
+                                        verbose_name='Родительская категория',
+                                        related_name='subcategories')
 
     position = models.PositiveSmallIntegerField(blank=True,
                                                 help_text='Это то, в каком шестиугольнике будет находиться фото. \
@@ -104,7 +108,13 @@ class Item(models.Model):
                                   default='c',
                                   verbose_name='Приоритетность')
 
-    description = models.TextField(max_length=300, verbose_name='Описание', null=True, blank=True)
+    cost = models.FloatField(max_length=5, verbose_name='Цена')
+
+    article = models.CharField(max_length=9, verbose_name='Артикул')
+
+    short_info = models.CharField(max_length=50, verbose_name='Инфо-ия для Анимации')
+
+    #description = models.TextField(max_length=300, verbose_name='Описание', null=True, blank=True)
 
     def clean(self):
         pass
@@ -128,6 +138,11 @@ class Property(models.Model):
                                 verbose_name='Порядковый номер',
                                 help_text='В соответствии с этим номером сортируются свойства.\
                                             Свойства с маленьким порядковым номером - сверху, с большим - снизу')
+
+    starred = models.BooleanField(default=False,
+                                  verbose_name='Звезданутый?',
+                                  help_text='Отмечено ли свойство звездочкой.')
+
     item = models.ForeignKey(Item)
 
     def __str__(self):

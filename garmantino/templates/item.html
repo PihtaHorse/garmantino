@@ -45,15 +45,23 @@
 
             <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
 				<div id='hexagon-with-description'>
-                        <div id="item-title">{{ item_name|title }}</div>
+                        <div id="item-title">{{ item_name }}</div>
 
                         <div id='description'>
                             <div id='button-right'> <div class="button"></div> </div>
 
                             <div id="properties">
+                                    <div class="property">
+                                        <div class="property-name"> Артикул</div>
+                                        <div class="property-value"> {{ item_article }} </div>
+                                    </div>
+                                    <div class="property">
+                                        <div class="property-name"> Цена</div>
+                                        <div class="property-value"> {{ item_cost_rubles }}руб.{{ item_cost_kopeck }}коп </div>
+                                    </div>
                                 {% for property in properties %}
                                     <div class="property">
-                                        <div class="property-name"> {{ property.name }}</div>
+                                        <div class="property-name"> {{ property.name }}{% if property.starred %}*{% endif %}</div>
                                         <div class="property-value"> {{ property.value }} </div>
                                     </div>
                                 {% empty %}

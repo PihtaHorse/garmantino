@@ -62,7 +62,8 @@ body {
 }
 
 #logo-big{
-    max-width: 310px;
+    width: 310px;
+    width: 25vw;
 }
 
 .hexagons-wrapper > :first-child{
@@ -70,8 +71,6 @@ body {
 }
 
 .hexagons-wrapper > :last-child{
-	height: 18.3vw;
-    margin-bottom: -75px;
 }
 
 .hexagons-wrapper > :first-child > :first-child .hexagon-part2,

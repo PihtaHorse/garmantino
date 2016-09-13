@@ -46,7 +46,7 @@ body {
 }
 
 #last-row{
-	height: 18.3vw !important;
+
 }
 
 /*logo*/
@@ -75,6 +75,7 @@ body {
     height: 0;
     border-style: solid;
     border-width: 35px 21px 35px 0;
+    border-width: 2.33333vw 1.4vw 2.33333vw 0;
     border-color: transparent #942A2E transparent transparent;
 }
 
@@ -83,6 +84,7 @@ body {
     height: 0;
     border-style: solid;
     border-width: 35px 0 35px 21px;
+    border-width: 2.33333vw 0 2.33333vw 1.4vw;
     border-color: transparent transparent transparent #942A2E;
 }
 
@@ -189,7 +191,7 @@ body {
 
 #checkout a{
     font-size: 22px;
-    font-size: 1.8vw;
+    font-size: 1.6vw;
     text-align: center;
     /*text-decoration: underline;*/
     text-decoration: none;
