@@ -76,11 +76,10 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'garmantino',
-        'USER': 'root',
+        'NAME': 'PihtaHorse$garmantino',
+        'USER': 'PihtaHorse',
         'PASSWORD': 'z7550502',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': 'PihtaHorse.mysql.pythonanywhere-services.com',
         'default-character-set': 'utf8',
     }
 }
