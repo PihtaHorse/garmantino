@@ -3,14 +3,14 @@
     overflow: hidden;
     bottom: 6vw;
     height: 4.0vw;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 .triangle {
     position: relative;
     height: 0;
     width: 0;
-    border-top: 2.59808vw solid rgba(255, 255, 255, 0.9);
+    border-top: 2.59808vw solid rgba(255, 255, 255, 0.6);
     border-left: 4.5vw solid transparent;
     border-right: 4.5vw solid transparent;
     left: 5.5vw;
@@ -57,7 +57,7 @@
 }
 
 .hexagon-content:hover .triangle {
-    border-top: 5.19615vw solid rgba(255, 255, 255, 0.9);
+    border-top: 5.19615vw solid rgba(255, 255, 255, 0.6);
     border-left: 9vw solid transparent;
     border-right: 9vw solid transparent;
     left: 1vw;

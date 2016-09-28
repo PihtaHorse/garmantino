@@ -25,17 +25,16 @@
                 </div>
             </div>
         </div>
-        <div class='nav-bar-menu-item'> <a href='#'> Контакты </a> </div>
-        <div class='nav-bar-menu-item'> <a href='#'> О компании </a> </div>
-        <div class='nav-bar-menu-item'> <a href='#'> Задать вопрос </a> </div>
-        <div class='nav-bar-menu-item'> <a href='#'> English Version </a> </div>
+        <div class='nav-bar-menu-item'> <a href='{% url "contacts" %}' target="_blank"> Контакты </a> </div>
+        <div class='nav-bar-menu-item'> <a href='{% url "contacts" %}' target="_blank"> О компании </a> </div>
+        <div class='nav-bar-menu-item'> <a href='#' target="_blank"> Задать вопрос </a> </div>
     </div>
 
     <div id="nav-bar-left-part">
         <div id="social-icons">
-            <a href='#'> <i class="fa fa-vk">  </i> </a>
-            <a href='#'> <i class="fa fa-facebook-square">  </i> </a>
-            <a href='#'> <i class="fa fa-instagram"  aria-hidden="true"></i> </a>
+            <a href='#'> <i class="icon-vkontakte-1" target="_blank">&#xe802;</i></a>
+            <a href='#'> <i class="icon-facebook" target="_blank">&#xE803;</i> </a>
+            <a href="http://instagram.com/temppihta/" target="_blank"> <i class="icon-instagram-2">&#xe804;</i> </a>
         </div>
 
         <form action='{% url "search"%}' method='get' >

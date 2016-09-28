@@ -108,7 +108,7 @@ class Item(models.Model):
                                   default='c',
                                   verbose_name='Приоритетность')
 
-    cost = models.FloatField(max_length=5, verbose_name='Цена')
+    cost = models.FloatField(max_length=10, verbose_name='Цена')
 
     article = models.CharField(max_length=9, verbose_name='Артикул')
 

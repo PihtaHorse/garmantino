@@ -184,3 +184,15 @@ class SearchView(View):
         add_categories_to_context(context)
 
         return render(request, 'catalogue_search.html', context)
+
+
+class ContactsView(View):
+    @staticmethod
+    def get_data_from_db(question):
+        pass
+
+    @staticmethod
+    def get(request):
+        context = {}
+        add_categories_to_context(context)
+        return render(request, 'contacts.html', context)
