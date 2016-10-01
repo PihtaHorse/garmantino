@@ -6,23 +6,33 @@ var i = 0, lastNumber = 0, n,
     buttonRight = document.getElementById("button-right");
     n = paths.length;
 
-var buttonLeftClick = function(){
-    console.log(lastNumber, img.src);
-    if (lastNumber != 0) img.src = paths[--lastNumber];
-    else{
-        lastNumber = n-1;
-        img.src = paths[lastNumber];
-    }
-};
+if(n <= 1){
+    var buttons = document.getElementsByClassName("button");
 
-var buttonRightClick = function(){
-    console.log(lastNumber, img.src);
-    if (lastNumber != n-1) img.src = paths[++lastNumber];
-    else{
-        lastNumber = 0;
-        img.src = paths[lastNumber];
+    for(i=0; i<buttons.length; i++){
+        buttons[i].style.borderColor = "transparent";
     }
-};
+}
+else {
+    var buttonLeftClick = function(){
+        console.log(lastNumber, img.src);
+        if (lastNumber != 0) img.src = paths[--lastNumber];
+        else{
+            lastNumber = n-1;
+            img.src = paths[lastNumber];
+        }
+    };
 
-buttonLeft.addEventListener("click", buttonLeftClick);
-buttonRight.addEventListener("click", buttonRightClick);
+    var buttonRightClick = function(){
+        console.log(lastNumber, img.src);
+        if (lastNumber != n-1) img.src = paths[++lastNumber];
+        else{
+            lastNumber = 0;
+            img.src = paths[lastNumber];
+        }
+    };
+
+    buttonLeft.addEventListener("click", buttonLeftClick);
+    buttonRight.addEventListener("click", buttonRightClick);
+}
+

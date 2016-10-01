@@ -1,6 +1,25 @@
 {% load staticfiles %}
-<nav id='header'>
 
+<div id="pop-up">
+    <div id="pop-up-background"></div>
+    <div id="question-form-wrapper">
+        <div id="question-form-header">
+            <div id="title"> Ваш вопрос </div>
+            <button type="button" id="close">x</button>
+        </div>
+        <form action='{% url "ask_question"%}' method='get' id="question-form">
+            <input type='text' name='name' id='name' placeholder='Как Вас зовут?'>
+            <textarea name='question' id='question' placeholder='Ваш вопрос'></textarea>
+            <input type='email' name='email' id='email' placeholder='Ваш почтовый адресс'>
+            <input type='tel' name='phone' id='phone' placeholder='Ваш телефон'>
+            <div id="submit-wrapper">
+                <input type='submit' value='Отправить'>
+            </div>
+        </form>
+    </div>
+</div>
+
+<nav id='header'>
     <div id="nav-bar-menu">
         <a href='{% url "index" %}' id="anchor-to-index"> <img id='logo' src='{% static "imgs/logo-gray.png" %}'> </a>
         <div class='nav-bar-menu-item'>
@@ -26,8 +45,7 @@
             </div>
         </div>
         <div class='nav-bar-menu-item'> <a href='{% url "contacts" %}' target="_blank"> Контакты </a> </div>
-        <div class='nav-bar-menu-item'> <a href='{% url "contacts" %}' target="_blank"> О компании </a> </div>
-        <div class='nav-bar-menu-item'> <a href='#' target="_blank"> Задать вопрос </a> </div>
+        <div class='nav-bar-menu-item'> <a href='#' id="ask-question-button"> Задать вопрос </a> </div>
     </div>
 
     <div id="nav-bar-left-part">

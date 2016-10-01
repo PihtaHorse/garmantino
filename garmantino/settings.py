@@ -113,3 +113,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 STATIC_URL = '/static/'
 
 DEFAULT_PHOTO_URL = '/static/imgs/default-item.jpg'
+
+# Email
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "garmantinoshop@gmail.com"
+EMAIL_HOST_PASSWORD = 'z7550502'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

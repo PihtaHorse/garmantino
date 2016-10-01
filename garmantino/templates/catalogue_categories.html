@@ -1,7 +1,7 @@
 {% extends "catalogue.html" %}
 {% load staticfiles %}
 
-{% block styles %}
+{% block additional_styles %}
     <link rel='stylesheet' href='{% static "css\catalogue_category_name_trapezoid.css" %}'>
 {% endblock %}
 
@@ -11,7 +11,7 @@
             <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 with-content'>
                 <a href='{% url "category" category.id %}'>
                     <div class="hexagon-content">
-                        <img src='{{ category.photo }}' class='pic' title='{{ category.name }}'>
+                        <img src='{{ category.photo }}' class='pic'>
                         <div class="triangle-wrapper">
                             <div class="triangle"></div>
                             <div class="info-wrapper">

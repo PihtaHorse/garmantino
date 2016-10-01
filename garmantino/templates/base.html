@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='ru' xmlns="http://www.w3.org/1999/html">
+
+	<head>
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static "imgs/apple-touch-icon.png" %}">
+        <link rel="icon" type="image/png" href={% static "imgs/favicon-32x32.png" %} sizes="32x32">
+        <link rel="icon" type="image/png" href={% static "imgs/favicon-16x16.png" %} sizes="16x16">
+		<meta charset="UTF-8">
+
+        <script src='{% static "js/prefixfree.viewport-units.js" %}'></script>
+        <script src='{% static "js/prefixfree.min.js" %}'></script>
+
+        <link rel='stylesheet' href='{% static "css\header.css" %}'>
+        <link rel='stylesheet' href='{% static "css\dropdown.css" %}'>
+        <link rel='stylesheet' href='{% static "css\ask_question.css" %}'>
+        {% block styles %}{% endblock %}
+
+		<title>Garmantino.by</title>
+	</head>
+
+	<body>
+    {% block body %}{% endblock %}
+
+    {% block scripts %}{% endblock %}
+    <script>
+        var logo_gray_url = '{% static "imgs/logo-gray.png" %}';
+        var logo_red_url = '{% static "imgs/logo-red.png" %}';
+    </script>
+    <script src='{% static "js/pop_up.js" %}'></script>
+    <script src='{% static "js/header.js" %}'></script>
+    </body>
+
+</html>
