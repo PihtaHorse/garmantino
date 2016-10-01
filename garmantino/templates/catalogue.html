@@ -1,55 +1,47 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang='ru' xmlns="http://www.w3.org/1999/html">
 
-	<head>
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static "imgs/apple-touch-icon.png" %}">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-32x32.png" %} sizes="32x32">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-16x16.png" %} sizes="16x16">
-		<meta charset="UTF-8">
-        <link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
-		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
-		<link rel='stylesheet' href='{% static "css\header.css" %}'>
-		<link rel='stylesheet' href='{% static "css\footer.css" %}'>
-		<link rel='stylesheet' href='{% static "css\catalogue.css" %}'>
-        {% block styles %}{% endblock %}
-		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-		<title>Garmantino.by</title>
-	</head>
+{% block styles %}
+    <link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
+    <link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
+    <link rel='stylesheet' href='{% static "css\catalogue.css" %}'>
+    <link rel='stylesheet' href='{% static "css\footer.css" %}'>
+    {% block additional_styles %}{% endblock %}
+{% endblock %}
 
-	<body>
-        <div id="page">
-            {%include 'header.html'%}
 
-            <div id="page-content">
-                <div id="logo-big-wrapper"> <img id="logo-big" src='{% static "imgs/logo-big.png" %}'> </div>
+{% block body %}
+    <div id="page">
+        {%include 'header.html'%}
 
-                <div class='hexagons-wrapper'>
-                    {% for row in rows %}
+        <div id="page-content">
+            <div id="logo-big-wrapper"> <img id="logo-big" src='{% static "imgs/logo-big.png" %}'> </div>
 
-                        <div class= '{% if row|length == 4%} hexagon-row-even {% else %} hexagon-row-odd {% endif %}'>
-                            {% if row|length == 4 or forloop.counter == 1%}
-                                <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
-                                </div></div></div>
-                            {% endif %}
+            <div class='hexagons-wrapper'>
+                {% for row in rows %}
 
-                            {% block content %}{% endblock %}
+                    <div class= '{% if row|length == 4%} hexagon-row-even {% else %} hexagon-row-odd {% endif %}'>
+                        {% if row|length == 4 or forloop.counter == 1%}
+                            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+                            </div></div></div>
+                        {% endif %}
 
-                            {% if row|length == 4 or forloop.counter == 1%}
-                                <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
-                                </div></div></div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+                        {% block content %}{% endblock %}
 
-                    {%include 'footer.html'%}
-                </div>
+                        {% if row|length == 4 or forloop.counter == 1%}
+                            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+                            </div></div></div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                {%include 'footer.html'%}
             </div>
-
-            <script src='{% static "js/hexagon_rows.js" %}'></script>
-            <script src='{% static "js/catalogue.js" %}'></script>
-
         </div>
-    </body>
+    </div>
+{% endblock %}
 
-</html>
+{% block scripts %}
+    <script src='{% static "js/hexagon_rows.js" %}'></script>
+    <script src='{% static "js/catalogue.js" %}'></script>
+{% endblock %}

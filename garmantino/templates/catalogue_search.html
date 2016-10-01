@@ -1,7 +1,7 @@
 {% extends "catalogue.html" %}
 {% load staticfiles %}
 
-{% block styles %}
+{% block additional_styles %}
     <link rel='stylesheet' href='{% static "css\catalogue_triangle_animation.css" %}'>
 {% endblock %}
 
@@ -12,7 +12,7 @@
             <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 with-content'>
                 <a href='{% url "item" item.id %}'>
                     <div class="hexagon-content">
-                        <img src='{{ item.photo }}' class='pic' title='{{ item.name }}'>
+                        <img src='{{ item.photo }}' class='pic'>
                         <div class="triangle-wrapper">
                             <div class="triangle"></div>
                             <div class="info info-first">{{ item.cost.rubles }}р.{{ item.cost.kopeck }}к.</div>
