@@ -1,93 +1,86 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang='ru'>
-    
-	<head>
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static "imgs/apple-touch-icon.png" %}">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-32x32.png" %} sizes="32x32">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-16x16.png" %} sizes="16x16">
-		<meta charset='UTF-8'>
-		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
-		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
-		<link rel='stylesheet' href='{% static "css\index.css" %}'>
-        <link rel='stylesheet' href='{% static "css\header.css" %}'>
-        <link rel='stylesheet' href='{% static "css\dropdown.css" %}'>
-		<title>Garmantino.by</title>
-	</head>
 
-	<body>
-        {%include 'header.html'%}
+{% block styles %}
+    <link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
+    <link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
+    <link rel='stylesheet' href='{% static "css\index.css" %}'>
+{% endblock %}
 
-		<div class='hexagons-wrapper' id="hexagons-wrapper">
 
-			{% for row in rows %}
-				<div class= '{% if row|length == 5%} hexagon-row-odd {% else %} hexagon-row-even {% endif %}'>
+{% block body %}
+{%include 'header.html'%}
 
-                    {% if row|length == 4%}
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                    {% endif %}
+    <div class='hexagons-wrapper' id="hexagons-wrapper">
 
-					{% for cell in row %}
-						{% if cell %}
-							<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-								<a href='{% url "item" cell.item_id%}' > <img class='animated' src='{{ cell.item_photo_url }}'> </a>
-							</div></div></div>
-						{% elif forloop.parentloop.counter == 2 and forloop.counter == 3%}
-                            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                                <a href='{% url "catalogue" %}' > <img src='{% static "imgs/main-logo.png" %}'> </a>
-                            </div></div></div>
-                        {% else %}
-                            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                            </div></div></div>
-						{% endif %}
-					{% endfor %}
+        {% for row in rows %}
+            <div class= '{% if row|length == 5%} hexagon-row-odd {% else %} hexagon-row-even {% endif %}'>
 
-                    {% if row|length == 4%}
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                    {% endif %}
-
-				</div>
-			{% endfor %}
-
-            {% if rows|length < 2%}
-                {% if rows|length == 0 %}
-                    <div class='hexagon-row-even'>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
-                    </div>
+                {% if row|length == 4%}
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
                 {% endif %}
 
-                <div class='hexagon-row-odd'>
+                {% for cell in row %}
+                    {% if cell %}
                         <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                            <a href='{% url "item" cell.item_id%}' > <img class='animated' src='{{ cell.item_photo_url }}'> </a>
                         </div></div></div>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
+                    {% elif forloop.parentloop.counter == 2 and forloop.counter == 3%}
                         <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
                             <a href='{% url "catalogue" %}' > <img src='{% static "imgs/main-logo.png" %}'> </a>
                         </div></div></div>
+                    {% else %}
                         <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
                         </div></div></div>
-                        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                        </div></div></div>
+                    {% endif %}
+                {% endfor %}
+
+                {% if row|length == 4%}
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+
+        {% if rows|length < 2%}
+            {% if rows|length == 0 %}
+                <div class='hexagon-row-even'>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
                 </div>
             {% endif %}
-        </div>
 
-        <script src='{% static "js/hexagon_rows.js" %}'></script>
-        <script src='{% static "js/rowsAutocomplite.js" %}'></script>
-        <script src='{% static "js/index.js" %}'></script>
-	</body>
-    
-</html>
+            <div class='hexagon-row-odd'>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                        <a href='{% url "catalogue" %}' > <img src='{% static "imgs/main-logo.png" %}'> </a>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+                    <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                    </div></div></div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src='{% static "js/hexagon_rows.js" %}'></script>
+    <script src='{% static "js/rowsAutocomplite.js" %}'></script>
+    <script src='{% static "js/index.js" %}'></script>
+{% endblock %}

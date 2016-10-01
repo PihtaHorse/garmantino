@@ -1,95 +1,87 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang='ru'>
-    
-	<head>
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static "imgs/apple-touch-icon.png" %}">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-32x32.png" %} sizes="32x32">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-16x16.png" %} sizes="16x16">
-		<meta charset='UTF-8'>
-		<link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
-		<link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
-		<link rel='stylesheet' href='{% static "css\header.css" %}'>
-		<link rel='stylesheet' href='{% static "css\item.css" %}'>
-		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-		<title>Garmantino.by</title>
-		
-		<script>
-            var paths = [{% for url in photos_urls %} '{{ url }}', {% empty %} '{% static "imgs/default-item.jpg" %}' {% endfor %}];
-        </script>
 
-	</head>
+{% block styles %}
+    <link rel='stylesheet' href='{% static "css\hexagon.css" %}'>
+    <link rel='stylesheet' href='{% static "css\hexagon-row.css" %}'>
+    <link rel='stylesheet' href='{% static "css\item.css" %}'>
+{% endblock %}
 
-	<body>
-		{%include 'header.html'%}
 
-        <img id="logo-big" src='{% static "imgs/logo-big.png" %}'>
-        
-		<div class='hexagon-row-odd' id='first-row'>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
-			</div></div></div>
-		</div>
-		
-		<div class='hexagon-row-even' id='middle-row'>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
-                <div id='button-left'> <div class="button"></div> </div>
-			</div></div></div>
+{% block body %}
+    {%include 'header.html'%}
 
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-					<img id='slider' src={{ photos_urls|first }}>
-			</div></div></div>
+    <img id="logo-big" src='{% static "imgs/logo-big.png" %}'>
 
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-				<div id='hexagon-with-description'>
-                        <div id="item-title">{{ item_name }}</div>
+    <div class='hexagon-row-odd' id='first-row'>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+        </div></div></div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+        </div></div></div>
+    </div>
 
-                        <div id='description'>
-                            <div id='button-right'> <div class="button"></div> </div>
+    <div class='hexagon-row-even' id='middle-row'>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2 hexagon-white'>
+            <div id='button-left'> <div class="button"></div> </div>
+        </div></div></div>
 
-                            <div id="properties">
-                                    <div class="property">
-                                        <div class="property-name"> Артикул</div>
-                                        <div class="property-value"> {{ item_article }} </div>
-                                    </div>
-                                    <div class="property">
-                                        <div class="property-name"> Цена</div>
-                                        <div class="property-value"> {{ item_cost_rubles }}руб.{{ item_cost_kopeck }}коп </div>
-                                    </div>
-                                {% for property in properties %}
-                                    <div class="property">
-                                        <div class="property-name"> {{ property.name }}{% if property.starred %}*{% endif %}</div>
-                                        <div class="property-value"> {{ property.value }} </div>
-                                    </div>
-                                {% empty %}
-                                    'На данный момент характеристик - нет!'
-                                {% endfor %}
-                            </div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+                <img id='slider' src={{ photos_urls|first }}>
+        </div></div></div>
+
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+            <div id='hexagon-with-description'>
+                    <div id="item-title">{{ item_name }}</div>
+
+                    <div id='description'>
+                        <div id='button-right'> <div class="button"></div> </div>
+
+                        <div id="properties">
+                                <div class="property">
+                                    <div class="property-name"> Артикул</div>
+                                    <div class="property-value"> {{ item_article }} </div>
+                                </div>
+                                <div class="property">
+                                    <div class="property-name"> Цена</div>
+                                    <div class="property-value"> {{ item_cost_rubles }}руб.{{ item_cost_kopeck }}коп </div>
+                                </div>
+                            {% for property in properties %}
+                                <div class="property">
+                                    <div class="property-name"> {{ property.name }}{% if property.starred %}*{% endif %}</div>
+                                    <div class="property-value"> {{ property.value }} </div>
+                                </div>
+                            {% empty %}
+                                'На данный момент характеристик - нет!'
+                            {% endfor %}
                         </div>
+                    </div>
 
-                        <div id="remark"><p>Параметры, отмеченные знаком "*", могут быть изменены при оформлении заказа</p></div>
+                    <div id="remark"><p>Параметры, отмеченные знаком "*", могут быть изменены при оформлении заказа</p></div>
 
-                        <div id="checkout"><a href="#">Оформить заказ</a></div>
-				</div>
-			</div></div></div>
+                    <!--<div id="checkout"><a href="#">Оформить заказ</a></div>-->
+            </div>
+        </div></div></div>
 
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-		</div>
-		
-		<div class='hexagon-row-odd' id='last-row'>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-			<div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-            <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-			</div></div></div>
-		</div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+    </div>
 
-		<script src='{% static "js/item.js" %}'></script>
-    </body>
-    
-</html>
+    <div class='hexagon-row-odd' id='last-row'>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var paths = [{% for url in photos_urls %} '{{ url }}', {% empty %} '{% static "imgs/default-item.jpg" %}' {% endfor %}];
+    </script>
+    <script src='{% static "js/item.js" %}'></script>
+    <script src='{% static "js/preload.js" %}'></script>
+{% endblock %}

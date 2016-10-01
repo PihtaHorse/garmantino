@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^contacts/$', views.ContactsView.as_view(), name='contacts'),
     url(r'^search/$', views.SearchView.as_view(), name='search'),
+    url(r'^askquestion/$', views.AskQuestionView.as_view(), name='ask_question'),
     url(r'^catalogue/$', views.CatalogueView.as_view(), name='catalogue'),
     url(r'^catalogue/category/(?P<category_id>[0-9]+)/$', views.CategoryView.as_view(), name='category'),
     url(r'^item/(?P<item_id>[0-9]+)/$', views.ItemView.as_view(), name='item'),

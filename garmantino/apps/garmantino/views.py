@@ -3,6 +3,8 @@ from django.shortcuts import render
 from .models import Category, Item, Image, Property, ItemOnHomePage
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.paginator import Paginator
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.views.generic import View
 from .services.pack_in_rows import PackInRows
@@ -196,3 +198,27 @@ class ContactsView(View):
         context = {}
         add_categories_to_context(context)
         return render(request, 'contacts.html', context)
+
+    from django.core.mail import send_mail
+
+
+class AskQuestionView(View):
+    @staticmethod
+    def get(request):
+        subject = "Вопрос пользователя garmantino.by"
+        name = request.GET.get("name", "")
+        question = request.GET.get("question", "")
+        email = request.GET.get("email", "")
+        phone = request.GET.get("phone", "")
+
+        if question and (email or phone):
+            message = "Email пользователя: " + email + '\n'
+            message += "Имя пользователя: " + name + '\n'
+            message += "Телефон пользователя: " + phone + '\n'
+            message += "Вопрос пользователя: " + question + '\n'
+
+            try:
+                send_mail(subject, message, "garmantinoshop@gmail.com", ['garmantinoshop@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))

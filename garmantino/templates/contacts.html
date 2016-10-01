@@ -1,62 +1,53 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang='ru'>
 
-	<head>
+{% block styles %}
+    <link rel='stylesheet' href='{% static "css\contacts.css" %}'>
+{% endblock %}
 
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static "imgs/apple-touch-icon.png" %}">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-32x32.png" %} sizes="32x32">
-        <link rel="icon" type="image/png" href={% static "imgs/favicon-16x16.png" %} sizes="16x16">
-		<meta charset='UTF-8'>
-		<link rel='stylesheet' href='{% static "css\contacts.css" %}'>
-        <link rel='stylesheet' href='{% static "css\header.css" %}'>
-        <link rel='stylesheet' href='{% static "css\dropdown.css" %}'>
-		<title>Garmantino.by</title>
 
-        <script>
-            var image = '{% static "imgs/map_logo.png" %}'
-        </script>
-	</head>
+{% block body %}
+    {%include 'header.html'%}
 
-	<body>
-        {%include 'header.html'%}
+    <div id="content">
+        <div id="map"></div>
+        <div id="info">
+            <img id="logo-big" src='{% static "imgs/logo-big.png" %}'>
 
-        <div id="content">
-            <div id="map"></div>
-            <div id="info">
-                <img id="logo-big" src='{% static "imgs/logo-big.png" %}'>
-
-                <div id="info-content">
-                    <div class="info-block">
-                        <div class="info-block-title">Адрес</div>
-                        <div class="info-block-content">
-                            <div class="info-block-item">г. Минск, ул.Матусевича, 35</div>
-                            <div class="info-block-item">Мебельный гипермаркет Домашний очаг</div>
-                            <div class="info-block-item">этаж 2, павильон 6.</div>
-                        </div>
+            <div id="info-content">
+                <div class="info-block">
+                    <div class="info-block-title">Адрес</div>
+                    <div class="info-block-content">
+                        <div class="info-block-item">г. Минск, ул.Матусевича, 35</div>
+                        <div class="info-block-item">Мебельный гипермаркет Домашний очаг</div>
+                        <div class="info-block-item">этаж 2, павильон 6.</div>
                     </div>
+                </div>
 
-                    <div class="info-block">
-                        <div class="info-block-title">Часы работы</div>
-                        <div class="info-block-content">
-                            <div class="info-block-item">ежедневно 10:00-21:00</div>
-                        </div>
+                <div class="info-block">
+                    <div class="info-block-title">Часы работы</div>
+                    <div class="info-block-content">
+                        <div class="info-block-item">ежедневно 10:00-21:00</div>
                     </div>
+                </div>
 
-                    <div class="info-block">
-                        <div class="info-block-title">Контакты</div>
-                        <div class="info-block-content">
-                            <div class="info-block-item">+375 29 601-47-77</div>
-                            <div class="info-block-item">+375 29 182-55-93</div>
-                            <div class="info-block-item">info@garmantino.by</div>
-                        </div>
+                <div class="info-block">
+                    <div class="info-block-title">Контакты</div>
+                    <div class="info-block-content">
+                        <div class="info-block-item">+375 29 601-47-77</div>
+                        <div class="info-block-item">+375 29 182-55-93</div>
+                        <div class="info-block-item">info@garmantino.by</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+{% endblock %}
 
-        <script src='{% static "js/google_maps.js" %}'></script>
-        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-	</body>
-
-</html>
+{% block scripts %}
+    <script>
+        var image = '{% static "imgs/map_logo.png" %}'
+    </script>
+    <script src='{% static "js/google_maps.js" %}'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+{% endblock %}
