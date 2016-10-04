@@ -46,11 +46,6 @@ body {
 
 /*other css*/
 
-body {
-	background: white;
-    font-family: 'DidactGothic';
-}
-
 #logo-big-wrapper{
     display: flex;
     flex-direction: column;
@@ -97,10 +92,4 @@ body {
 
 .hexagon-content:hover .pic{
     opacity: 0.85;
-}
-
-@font-face{
-    font-family: 'DidactGothic';
-    src: url(../fonts/DidactGothic/DidactGothic.ttf);
-    font-weight: normal;
 }
