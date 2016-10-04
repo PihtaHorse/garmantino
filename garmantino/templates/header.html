@@ -30,7 +30,7 @@
                         {% for category in categories %}
                             <li>
                                 <div class="category">
-                                    <img src='{% static "imgs/list-arrow.jpg" %}'>
+                                    <img src='{% static "imgs/arrow-right.png" %}'>
                                     <a href="{% url "category" category.id %}">{{ category.name }}{% if category.subcategories %}:{% endif %}</a>
                                 </div>
                                  <ul class="sub-category">
@@ -60,5 +60,19 @@
             <input type='submit' value=''>
         </form>
     </div>
+</nav>
 
+<nav id='navigation'>
+    {% for item in navigation %}
+        {% if forloop.last %}
+            <div id='current-navigation-item'>
+                {{item.name}}
+            </div>
+        {% else %}
+            <a class='navigation-item' href='{{ item.url }}'> {{item.name}} </a>
+            <img src='{% static "imgs/arrow-left.png" %}'>
+        {% endif %}
+
+
+    {% endfor %}
 </nav>

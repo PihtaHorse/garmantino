@@ -16,7 +16,7 @@ class ImageInline(admin.TabularInline):
 
 class ItemAdmin(admin.ModelAdmin):
     inlines = (PropertyInline, ImageInline)
-    list_display = ('name', 'status', 'importance', 'pub_date', 'cost')
+    list_display = ('article', 'name', 'status', 'importance', 'pub_date', 'cost')
     list_filter = ('status', 'category')
     search_fields = ('name',)
     date_hierarchy = 'pub_date'

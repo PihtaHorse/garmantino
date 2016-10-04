@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.views.generic import View
 from .services.pack_in_rows import PackInRows
 from .services.services import add_categories_to_context
@@ -13,6 +14,10 @@ from itertools import chain, cycle
 
 
 class IndexView(View):
+    @staticmethod
+    def add_navigation(context):
+        context['navigation'] = [{'name': 'Главная', 'url': reverse('index')}]
+
     @staticmethod
     def get_data_from_db():
         items_on_homepage = ItemOnHomePage.objects.order_by('position')
@@ -33,13 +38,18 @@ class IndexView(View):
                                                    [pos - 1 for pos in items_positions],
                                                    ['item_id', items_ids],
                                                    ['item_photo_url', photos_urls])
-
         context = {'rows': rows}
+
         add_categories_to_context(context)
         return render(request, 'index.html', context)
 
 
 class CatalogueView(View):
+    @staticmethod
+    def add_navigation(context):
+        IndexView.add_navigation(context)
+        context['navigation'] += [{'name': 'Каталог', 'url': reverse('catalogue')}]
+
     @staticmethod
     def get_data_from_db():
         super_category = Category.objects.get(parent_category_id__isnull=True)
@@ -60,11 +70,26 @@ class CatalogueView(View):
                                                    ['name', names], ['id', ids], ['photo', photos])
 
         context = {'rows': rows}
+        CatalogueView.add_navigation(context)
         add_categories_to_context(context)
         return render(request, 'catalogue_categories.html', context)
 
 
 class CategoryView(View):
+    @staticmethod
+    def add_navigation(context, category_id, category_name):
+        CatalogueView.add_navigation(context)
+
+        super_category = Category.objects.get(parent_category_id__isnull=True)
+        parent_category = Category.objects.get(subcategories=category_id)
+
+        while parent_category.id != super_category.id:
+            parent_id = parent_category.id
+            context['navigation'] += [{'name': parent_category.name, 'url': reverse('category', args=[parent_id, ])}]
+            parent_category = Category.objects.get(subcategories=parent_id)
+
+        context['navigation'] += [{'name': category_name, 'url': reverse('category', args=[category_id, ])}]
+
     @staticmethod
     def get_items_data_from_db(category_id):
         items = Item.objects.filter(category=category_id, status='y').order_by('importance')
@@ -91,6 +116,7 @@ class CategoryView(View):
 
     @staticmethod
     def get(request, category_id):
+        category = Category.objects.get(id=category_id)
         subcategories = Category.objects.filter(parent_category_id=category_id).order_by('position')
 
         if subcategories:
@@ -121,11 +147,17 @@ class CategoryView(View):
             context = {'rows': rows}
             template = 'catalogue_items.html'
 
+        CategoryView.add_navigation(context, category.id, category.name)
         add_categories_to_context(context)
         return render(request, template, context)
 
 
 class ItemView(View):
+    @staticmethod
+    def add_navigation(context, item_id, item_name, category_id, category_name):
+        CategoryView.add_navigation(context, category_id, category_name)
+        context['navigation'] += [{'name': item_name, 'url': reverse('item', args=[item_id, ])}]
+
     @staticmethod
     def get_data_from_db(item_id):
         item = Item.objects.get(id=item_id)
@@ -134,11 +166,11 @@ class ItemView(View):
         properties = Property.objects.filter(item_id=item_id).order_by('order')
         rubles, kopeck = divmod(item.cost, 1)
 
-        return item.name, int(rubles), int(kopeck*100), item.article, properties, photos_urls
+        return item.name, int(rubles), int(kopeck*100), item.article, properties, photos_urls, item.category
 
     @staticmethod
     def get(request, item_id):
-        name, rubles, kopeck, article, properties, photos_urls = ItemView.get_data_from_db(item_id)
+        name, rubles, kopeck, article, properties, photos_urls, category = ItemView.get_data_from_db(item_id)
 
         context = {'item_name': name,
                    'item_cost_rubles': rubles,
@@ -148,10 +180,17 @@ class ItemView(View):
                    'properties': properties}
 
         add_categories_to_context(context)
+
+        ItemView.add_navigation(context, item_id, name, category.id, category.name)
         return render(request, 'item.html', context)
 
 
 class SearchView(View):
+    @staticmethod
+    def add_navigation(context, question):
+        IndexView.add_navigation(context)
+        context['navigation'] += [{'name': 'Поиск по запросу "' + question + '"', 'url': reverse('search')}]
+
     @staticmethod
     def get_data_from_db(question):
         items = Item.objects.filter(name__icontains=question, status='y').order_by('importance')
@@ -183,6 +222,7 @@ class SearchView(View):
                                                 ['photo', items_first_photos])
 
         context = {'rows': rows}
+        SearchView.add_navigation(context, question)
         add_categories_to_context(context)
 
         return render(request, 'catalogue_search.html', context)
@@ -190,16 +230,20 @@ class SearchView(View):
 
 class ContactsView(View):
     @staticmethod
+    def add_navigation(context):
+        IndexView.add_navigation(context)
+        context['navigation'] += [{'name': 'Контакты', 'url': reverse('contacts')}]
+
+    @staticmethod
     def get_data_from_db(question):
         pass
 
     @staticmethod
     def get(request):
         context = {}
+        ContactsView.add_navigation(context)
         add_categories_to_context(context)
         return render(request, 'contacts.html', context)
-
-    from django.core.mail import send_mail
 
 
 class AskQuestionView(View):

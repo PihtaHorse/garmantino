@@ -15,8 +15,6 @@ time, mark, audio, video, button {
 }
 
 body {
-	background: white;
-    font-family: 'DidactGothic', Verdana, Arial, sans-serif;
     max-width: 100%;
     overflow: hidden;
 }
@@ -93,7 +91,6 @@ body {
 
 #button-left{
     height: 100%;
-
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -105,11 +102,52 @@ body {
     align-items: center;
     height: 87%;
     padding-left: 5px;
+    margin-top: 1vw;
+}
+
+#hexagon-content{
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 #slider{
     width: 100%;
     height: 100%;
+}
+
+#circles-wrapper{
+    position: absolute;
+    bottom: 12%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 5%;
+    width: 100%;
+    background-color: transparent;
+}
+
+.circle{
+    height: 1vw;
+    width: 1vw;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin: 0.5vw;
+    opacity: 0.4;
+}
+
+.circle:hover{
+    height: 1.2vw;
+    width: 1.2vw;
+    margin: 0.4vw;
+    opacity: 0.9;
+}
+
+.current-circle{
+    background-color: #ffffff;
+    opacity: 1;
 }
 
     /* description */
@@ -121,23 +159,23 @@ body {
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding-top: 1vw;
     background-color: white;
+    padding-top: 0.5vw;
 }
 
 #item-title{
-    margin-top: 0.8vw;
     max-width: 75%;
     font-size: 16pt;
     font-size: 1.6vw;
     text-align: center;
+    margin-bottom: 0.5vw;
 }
 
 #description{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 19.2448vw;
+    height: 18.2448vw;
 }
 
 #properties{
@@ -170,18 +208,17 @@ body {
 
 #properties .property .property-value{
     display: flex;
-    text-align: right;
-    max-width: 45%;
+    justify-content: flex-start;
+    width: 45%;
 }
 
 #remark{
     width: 68%;
     font-size: 15px;
-    font-size: 0.8vw;
-    font-weight: 600;
+    font-size: 1.1vw;
+    font-weight: 900;
     text-align: center;
     color: #a42926;
-    font-family: Verdana, Arial, sans-serif;
 }
 
 #checkout{
@@ -191,18 +228,10 @@ body {
 }
 
 #checkout a{
-    font-size: 22px;
     font-size: 1.6vw;
     text-align: center;
     /*text-decoration: underline;*/
     text-decoration: none;
     border-bottom: 1px solid #515151;
     color: #515151;
-}
-/* middle-row */
-
-@font-face{
-    font-family: 'DidactGothic';
-    src: url(../fonts/DidactGothic/DidactGothic.ttf);
-    font-weight: normal;
 }

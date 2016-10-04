@@ -15,9 +15,7 @@ time, mark, audio, video {
 }
 
 body {
-	background: white;
 	overflow-y: hidden;
-    font-family: 'DidactGothic', Verdana;
 }
 
 .hexagon-part2 {
@@ -41,8 +39,6 @@ body {
 	height: 100%;
 }
 
-@font-face{
-    font-family: 'DidactGothic';
-    src: url(../fonts/DidactGothic/DidactGothic.ttf);
-    font-weight: normal;
+.animated{
+    opacity: 0;
 }

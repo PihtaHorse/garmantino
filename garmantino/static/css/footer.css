@@ -21,7 +21,7 @@
     align-items: flex-start;
     color: #4b4b4b;
     font-size: 15px;
-    font-size: 1.1vw;
+    font-size: 0.95vw;
 }
 
 #footer-info p{
@@ -31,4 +31,9 @@
 #footer-info :last-child{
     margin-top: 20px;
     margin-top: 1.5vw;
+}
+
+#footer-main-page-link{
+    height: 100%;
+    width: 100%;
 }

@@ -15,8 +15,6 @@ time, mark, audio, video {
 }
 
 body {
-	background: white;
-    font-family: 'DidactGothic', Verdana;
     max-height: 100%;
     max-width: 100%;
 }
