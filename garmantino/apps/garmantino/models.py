@@ -98,10 +98,11 @@ class Item(models.Model):
                               default='m',
                               verbose_name='Статус производства')
 
-    category = models.ManyToManyField(Category,
-                                      help_text='Выбирать мышкой и кнопкой ctrl.\
-                                                Столик может относиться к нескольким категориям!',
-                                      verbose_name='Категория')
+    category = models.ForeignKey(Category,
+                                 verbose_name='Категория',
+                                 related_name='item_category',
+                                 blank=True,
+                                 default=True)
 
     importance = models.CharField(max_length=1,
                                   choices=IMPORTANCE_STATUS_CHOICES,
@@ -110,7 +111,7 @@ class Item(models.Model):
 
     cost = models.FloatField(max_length=10, verbose_name='Цена')
 
-    article = models.CharField(max_length=9, verbose_name='Артикул')
+    article = models.CharField(max_length=15, verbose_name='Артикул')
 
     short_info = models.CharField(max_length=50, verbose_name='Инфо-ия для Анимации')
 

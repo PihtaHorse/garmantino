@@ -28,7 +28,16 @@
         </div></div></div>
 
         <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
-                <img id='slider' src={{ photos_urls|first }}>
+                <div id='hexagon-content'>
+                    <img id='slider' src={{ photos_urls|first }}>
+                    <div id='circles-wrapper'>
+                        {% for url in photos_urls %}
+                            <div class='circle {% if forloop.first %} current-circle{% endif %}'></div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
         </div></div></div>
 
         <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
@@ -58,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div id="remark"><p>Параметры, отмеченные знаком "*", могут быть изменены при оформлении заказа</p></div>
+                    <div id="remark"><p>Параметры, отмеченные знаком « * », могут быть изменены при оформлении заказа</p></div>
 
                     <!--<div id="checkout"><a href="#">Оформить заказ</a></div>-->
             </div>
@@ -68,7 +77,18 @@
         </div></div></div>
     </div>
 
-    <div class='hexagon-row-odd' id='last-row'>
+    <div class='hexagon-row-odd'>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
+    </div>
+
+    <div class='hexagon-row-even'>
+        <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
+        </div></div></div>
         <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>
         </div></div></div>
         <div class='hexagon'><div class='hexagon-part1'><div class='hexagon-part2'>

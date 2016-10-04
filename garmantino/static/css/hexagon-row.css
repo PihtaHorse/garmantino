@@ -1,4 +1,5 @@
 .hexagon-row-odd, .hexagon-row-even{
+	display: -webkit-box;
 	display: flex;
 	flex-wrap: nowrap;
 	overflow: hidden;
