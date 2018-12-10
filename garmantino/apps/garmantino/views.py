@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.generic import View
 from .services.pack_in_rows import PackInRows
 from .services.services import add_categories_to_context

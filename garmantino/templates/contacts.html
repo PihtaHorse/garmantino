@@ -45,9 +45,7 @@
 {% endblock %}
 
 {% block scripts %}
-    <script>
-        var image = '{% static "imgs/map_logo.png" %}'
-    </script>
-    <script src='{% static "js/google_maps.js" %}'></script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+    <script>var shop_icon_path = '{% static "imgs/map_logo.png" %}';</script>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script src='{% static "js/open_street_maps.js" %}'></script>
 {% endblock %}

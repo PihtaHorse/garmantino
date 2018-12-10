@@ -45,6 +45,7 @@ class Category(models.Model):
                               verbose_name='Фотография')
 
     parent_category = models.ForeignKey("self",
+                                        on_delete=models.CASCADE,
                                         blank=True,
                                         null=True,
                                         verbose_name='Родительская категория',
@@ -99,6 +100,7 @@ class Item(models.Model):
                               verbose_name='Статус производства')
 
     category = models.ForeignKey(Category,
+                                 on_delete=models.CASCADE,
                                  verbose_name='Категория',
                                  related_name='item_category',
                                  blank=True,
@@ -144,7 +146,7 @@ class Property(models.Model):
                                   verbose_name='Звезданутый?',
                                   help_text='Отмечено ли свойство звездочкой.')
 
-    item = models.ForeignKey(Item)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name + ": " + self.value
@@ -163,7 +165,7 @@ class Image(models.Model):
                               default=settings.DEFAULT_PHOTO_URL,
                               verbose_name='Фото')
 
-    item = models.ForeignKey(Item)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
 
 class ItemOnHomePage(models.Model):
@@ -172,7 +174,7 @@ class ItemOnHomePage(models.Model):
         verbose_name_plural = "Предметы для главной страницы"
         ordering = ['pub_date']
 
-    item = models.OneToOneField(Item, verbose_name='Предмет для главной')
+    item = models.OneToOneField(Item, on_delete=models.CASCADE, verbose_name='Предмет для главной')
     pub_date = models.DateTimeField(auto_now_add=True)
     position = models.PositiveSmallIntegerField(blank=True,
                                                 help_text='''Это то, в каком шестиугольнике будет находиться фото.

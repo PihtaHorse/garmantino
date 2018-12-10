@@ -57,3 +57,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+*.sqlite3
+/garmantino/media/
+/garmantino/apps/garmantino/migrations/
+/garmantino/media/
+/garmantino/default_db

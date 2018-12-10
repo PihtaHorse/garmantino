@@ -1,5 +1,5 @@
 "use strict";
-var animated_hexagons, i, n, animation_duration, animation_delay;
+var animated_hexagons, i, n, animation_duration, animation_delay, animation_duration_for_one;
 var wrapper = document.getElementsByClassName('hexagons-wrapper')[0];
 var oddRow = "'hexagon-row-odd'", evenRow = "'hexagon-row-even'";
 var rowsNumber = wrapper.children.length;
@@ -25,11 +25,14 @@ else {
 
 animated_hexagons = document.querySelectorAll(".animated");
 n = animated_hexagons.length;
-animation_duration = 6.25 * n;
+
+animation_duration_for_one = 4;
+animation_duration = animation_duration_for_one * n;
 
 window.onload = setTimeout(function () {
     for (i = 0; i < n; i++) {
-        animation_delay = -6.25 * i;
+        animation_delay = -animation_duration_for_one * i;
+        console.log(i);
         animated_hexagons[i].style.animationName = 'anim1';
         animated_hexagons[i].style.animationDuration = animation_duration.toString() + 's';
         animated_hexagons[i].style.animationTimingFunction = 'linear';

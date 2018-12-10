@@ -28,9 +28,8 @@ body {
 
 @keyframes anim1 {
     0%   {opacity: 0; cursor: default;}
-	6.25%   {opacity: 1; cursor: pointer;}
-	25%   {opacity: 1; cursor: pointer;}
-	31.25%   {opacity: 0; cursor: default;}
+	12.5%  {opacity: 1; cursor: pointer;}
+    25% {opacity: 0; cursor: default;}
     100% {opacity: 0; cursor: default;}
 }
 
